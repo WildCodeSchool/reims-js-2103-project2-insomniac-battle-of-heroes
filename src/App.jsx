@@ -18,9 +18,10 @@ function App() {
       url: 'https://www.superherodb.com/pictures2/portraits/10/100/10632.jpg',
     },
   });
-  const random = Math.floor(Math.random() * 730) + 1;
-  const url = `http://localhost:8000/api/${random}/`;
+
   function showCards() {
+    const random = Math.floor(Math.random() * 730) + 1;
+    const url = `http://localhost:8000/api/${random}/`;
     axios.get(url)
       .then((response) => {
         console.log(response.data);
@@ -28,11 +29,6 @@ function App() {
       });
   }
 
-  // function test() {
-  //   return (
-  //     <p>Hi</p>
-  //   );
-  // }
   return (
     <div className="App">
       <Card avatar={avatar} />
