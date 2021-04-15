@@ -1,38 +1,101 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: oswald;
+    /*min-height: 100vh;*/
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(#202020, #383838);
+  /* background-repeat: no-repeat;
+  background-image: url("https://nsa40.casimages.com/img/2021/04/15/21041509430970619.jpg");
+  background-color: whitesmoke;
+  background-position: center top; */
+}
+
+#titleLogo {
+  display: block;
+  margin: 5px auto 20px auto;
+  width: 250px;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  background-color: #202020;
+  text-align: center;
+  padding: 15px 0 15px 0;
+  position: sticky;
+  bottom: 0;
+  order: 1;
+}
+
+.buttonOnMenu1, .buttonOnMenu2, .buttonOnMenu3 {
+  border: none;
+  border-radius: 0px;
+  height: 50px;
+  width: 290px;
+  background-color: #2dffe0;
+  box-shadow: 0 0 0 0rem #202020;
+  color: #202020;
+  font-size: 20px;
+  cursor: pointer;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.buttonOnMenu1:hover, .buttonOnMenu2:hover, .buttonOnMenu3:hover {
+  background-color: lightgray;
+  transition: all 0.3s ease;
+  color: #202020;
+  box-shadow: inset 0 0 0 0rem 202020;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.cards {
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.drawButton {
+  display: block;
+  margin: 20px auto 20px auto;
+  width: 290px;
+  background-color: #2dffe0;
+  border: none;
+  border-radius: 0px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.drawButton:hover {
+  background-color: lightgray;
+  box-shadow: 10px 10px 20px #202020;
+  transition: all 0.3s ease;
+  color: #202020;
+}
+
+@media screen and (min-width: 993px) {
+
+  .navBar {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    background-color: #202020;
+    text-align: center;
+    padding: 15px 0 15px 0;
+    position: sticky;
+    top: 0;
+    order: initial;
   }
 }
