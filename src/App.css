@@ -4,17 +4,12 @@
     margin: 0;
     padding: 0;
     font-family: oswald;
-    /*min-height: 100vh;*/
 }
 
 body {
   display: flex;
   flex-direction: column;
   background: linear-gradient(#202020, #383838);
-  /* background-repeat: no-repeat;
-  background-image: url("https://nsa40.casimages.com/img/2021/04/15/21041509430970619.jpg");
-  background-color: whitesmoke;
-  background-position: center top; */
 }
 
 #titleLogo {
