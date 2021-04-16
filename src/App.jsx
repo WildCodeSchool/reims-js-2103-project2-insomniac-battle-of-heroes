@@ -4,27 +4,13 @@ import Card from './components/Card';
 import './App.css';
 
 function App() {
-  const [avatar, setAvatar] = useState({
-    name: 'Nebula',
-    powerstats: {
-      intelligence: '63',
-      strength: '52',
-      speed: '13',
-      durability: '50',
-      power: '42',
-      combat: '60',
-    },
-    image: {
-      url: 'https://www.superherodb.com/pictures2/portraits/10/100/10632.jpg',
-    },
-  });
+  const [hero, setHero] = useState();
+  const [vilain, setVilain] = useState();
 
-  function showCards() {
-    const random = Math.floor(Math.random() * 730) + 1;
-    const url = `http://localhost:8000/api/${random}/`;
+  function showCards(id, setAvatar) {
+    const url = `http://localhost:8000/api/${id}/`;
     axios.get(url)
       .then((response) => {
-        console.log(response.data);
         setAvatar(response.data);
       });
   }
@@ -37,20 +23,20 @@ function App() {
             <img src="https://nsa40.casimages.com/img/2021/04/15/210415123011254599.png" id="titleLogo" alt="title-logo" />
           </div>
           <div className="navBar">
-            <button type="button" className="buttonOnMenu1">Menu 1</button>
-            <button type="button" className="buttonOnMenu2">Menu 2</button>
-            <button type="button" className="buttonOnMenu3">Menu 3</button>
+            <button type="button" className="buttonOnMenu1">Menu</button>
+            <button type="button" className="buttonOnMenu2">Play</button>
+            <button type="button" className="buttonOnMenu3">Collection</button>
           </div>
           <div className="cards">
-            <Card avatar={avatar} />
-            <Card avatar={avatar} />
-            <Card avatar={avatar} />
-            <Card avatar={avatar} />
-            <Card avatar={avatar} />
+            {hero && <Card avatar={hero} />}
+            <button type="button" onClick={() => showCards(396, setHero)} className="drawButton">
+              Draw hero
+            </button>
+            {vilain && <Card avatar={vilain} />}
+            <button type="button" onClick={() => showCards(60, setVilain)} className="drawButton">
+              Draw villain
+            </button>
           </div>
-          <button type="button" onClick={showCards} className="drawButton">
-            Card draw
-          </button>
         </body>
       </div>
     </>
