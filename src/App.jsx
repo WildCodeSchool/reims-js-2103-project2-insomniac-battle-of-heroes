@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Card from './components/Card';
+import draw from './components/draw';
 import './App.css';
 
 function App() {
   const [hero, setHero] = useState();
-  const [vilain, setVilain] = useState();
+  const [villain, setVillain] = useState();
 
   function showCards(id, setAvatar) {
     const url = `http://localhost:8000/api/${id}/`;
@@ -27,15 +28,19 @@ function App() {
             <button type="button" className="buttonOnMenu2">Play</button>
             <button type="button" className="buttonOnMenu3">Collection</button>
           </div>
-          <div className="cards">
-            {hero && <Card avatar={hero} />}
-            <button type="button" onClick={() => showCards(396, setHero)} className="drawButton">
-              Draw hero
-            </button>
-            {vilain && <Card avatar={vilain} />}
-            <button type="button" onClick={() => showCards(60, setVilain)} className="drawButton">
-              Draw villain
-            </button>
+          <div className="board">
+            <div className="heroSide cards">
+              {hero && <Card avatar={hero} />}
+              <button type="button" onClick={() => showCards(draw(1), setHero)} className="drawButton">
+                Draw hero
+              </button>
+            </div>
+            <div className="villainSide cards">
+              {villain && <Card avatar={villain} />}
+              <button type="button" onClick={() => showCards(draw(1), setVillain)} className="drawButton">
+                Draw villain
+              </button>
+            </div>
           </div>
         </body>
       </div>
