@@ -5,14 +5,14 @@ import draw from './components/draw';
 import './App.css';
 
 function App() {
-  const [hero, setHero] = useState();
-  const [villain, setVillain] = useState();
+  const [heroList, setHeroList] = useState([]);
+  const [villainList, setVillainList] = useState([]);
 
-  function showCards(id, setAvatar) {
+  function showCards(id, avatarList, setAvatarList) {
     const url = `http://localhost:8000/api/${id}/`;
     axios.get(url)
       .then((response) => {
-        setAvatar(response.data);
+        setAvatarList([...avatarList, response.data]);
       });
   }
 
@@ -30,16 +30,16 @@ function App() {
           </div>
           <div className="board">
             <div className="heroSide cards">
-              {hero && <Card avatar={hero} />}
-              <button type="button" onClick={() => showCards(draw(1), setHero)} className="drawButton">
+              <button type="button" onClick={() => showCards(draw(1), heroList, setHeroList)} className="drawButton">
                 Draw hero
               </button>
+              {heroList.map((oneHero) => (<Card avatar={oneHero} />))}
             </div>
             <div className="villainSide cards">
-              {villain && <Card avatar={villain} />}
-              <button type="button" onClick={() => showCards(draw(1), setVillain)} className="drawButton">
+              <button type="button" onClick={() => showCards(draw(1), villainList, setVillainList)} className="drawButton">
                 Draw villain
               </button>
+              {villainList.map((oneVillain) => (<Card avatar={oneVillain} />))}
             </div>
           </div>
         </body>
