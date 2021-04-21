@@ -51,6 +51,16 @@ body {
   box-shadow: inset 0 0 0 0rem 202020;
 }
 
+.board {
+  display: flex;
+  justify-content: space-around;
+}
+
+.heroSide, .villainSide, .cards{
+  display: flex;
+  flex-direction: column;
+}
+
 .cards {
   text-align: center;
   align-items: center;
