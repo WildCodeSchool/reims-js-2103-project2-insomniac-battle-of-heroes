@@ -13,17 +13,9 @@ function Card({ avatar }) {
           <div className="cardBody">
             <h1 className="heroName">{avatar.name}</h1>
             <p className="cardText">
-              Intelligence :
-              {' '}
-              {avatar.powerstats.intelligence}
-              <br />
               Strength :
               {' '}
               {avatar.powerstats.strength}
-              <br />
-              Speed :
-              {' '}
-              {avatar.powerstats.speed}
               <br />
               Durability :
               {' '}
@@ -32,10 +24,6 @@ function Card({ avatar }) {
               Power :
               {' '}
               {avatar.powerstats.power}
-              <br />
-              Combat :
-              {' '}
-              {avatar.powerstats.combat}
             </p>
           </div>
         </div>

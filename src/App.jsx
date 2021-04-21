@@ -16,6 +16,15 @@ function App() {
       });
   }
 
+  function showHand() {
+    draw(5).map((e) => (
+      axios.get(`http://localhost:8000/api/${e}/`)
+        .then((response) => {
+          setHeroList((prevHeroList) => [...prevHeroList, response.data]);
+        })
+    ));
+  }
+
   return (
     <>
       <div className="App">
@@ -30,16 +39,16 @@ function App() {
           </div>
           <div className="board">
             <div className="heroSide cards">
-              <button type="button" onClick={() => showCards(draw(1), heroList, setHeroList)} className="drawButton">
+              <button type="button" onClick={() => showHand()} className="drawButton">
                 Draw hero
               </button>
-              {heroList.map((oneHero) => (<Card avatar={oneHero} />))}
+              {heroList.map((hero) => (<Card avatar={hero} />))}
             </div>
             <div className="villainSide cards">
               <button type="button" onClick={() => showCards(draw(1), villainList, setVillainList)} className="drawButton">
                 Draw villain
               </button>
-              {villainList.map((oneVillain) => (<Card avatar={oneVillain} />))}
+              {villainList.map((villain) => (<Card avatar={villain} />))}
             </div>
           </div>
         </body>

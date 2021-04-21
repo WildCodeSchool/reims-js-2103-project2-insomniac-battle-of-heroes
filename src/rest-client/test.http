@@ -1,0 +1,15 @@
+### biographie
+GET https://superheroapi.com/api/{{token}}/101/
+
+### stats
+GET https://superheroapi.com/api/{{token}}/42/powerstats
+
+### image
+GET https://superheroapi.com/api/{{token}}/42/image
+
+###
+GET https://http-practice.herokuapp.com/status
+
+###
+GET https://http-practice.herokuapp.com/status
+Accept: application/json
