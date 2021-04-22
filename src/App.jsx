@@ -16,8 +16,9 @@ function App() {
     <>
       <div className="App">
         <body>
-          <div className="heroAvatar">
-            <img src="./images/logo-iboh-400.png" id="titleLogo" alt="title-logo" />
+          <div className="logoContent">
+            <img src="./images/logo-iboh-flat-400.png" id="titleLogo" alt="title-logo" />
+            <span id="logoBack" />
           </div>
           <div className="navBar">
             <button type="button" className="buttonOnMenu1">Menu</button>
