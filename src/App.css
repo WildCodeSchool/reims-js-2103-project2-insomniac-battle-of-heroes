@@ -9,13 +9,16 @@
 body {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#202020, #383838);
+  background: radial-gradient(circle, #383838, #202020);
+  background-image: url("/Users/tomrich/Documents/GitHub/insomniac battle of heroes/reims-js-2103-project2-insomniac-battle-of-heroes/src/iboh-background-3000.svg");
+  background-repeat: auto;
+  background-size: 100%;
 }
 
 #titleLogo {
   display: block;
   margin: 5px auto 20px auto;
-  width: 250px;
+  width: 200px;
 }
 
 .navBar {
@@ -73,23 +76,57 @@ body {
 .drawButton {
   display: block;
   margin: 20px auto 20px auto;
-  width: 290px;
-  background-color: #2dffe0;
-  border: none;
-  border-radius: 0px;
-  height: 50px;
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  border: 6px solid #2dffe0;
+  color: #2dffe0;
+  border-radius: 80px;
   font-size: 20px;
   cursor: pointer;
 }
 
 .drawButton:hover {
-  background-color: lightgray;
-  box-shadow: 10px 10px 20px #202020;
+  box-shadow: 
+    inset -3.5em 0 0 0 #2dffe0,
+    inset 3.5em 0 0 0 #2dffe0;
   transition: all 0.3s ease;
   color: #202020;
 }
 
+.drawButton:active, .drawButton:focus {
+  color: #202020;
+  background-color: #2dffe0;
+  box-shadow: 
+    inset -3.5em 0 0 0 #2dffe0,
+    inset 3.5em 0 0 0 #2dffe0;
+	animation: pulse 1s;
+}
+
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(45, 255, 224, 0.7);
+	}
+
+	70% {
+		box-shadow: 0 0 0 30px rgba(45, 255, 224, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
+	}
+}
+
 @media screen and (min-width: 993px) {
+
+  body {
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient(circle, #383838, #202020);
+    background-image: url("/Users/tomrich/Documents/GitHub/insomniac battle of heroes/reims-js-2103-project2-insomniac-battle-of-heroes/src/iboh-background-3000.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   .navBar {
     display: flex;
