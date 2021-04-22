@@ -26,10 +26,10 @@ function Game({
 }
 
 Game.propTypes = {
-  heroList: PropTypes.element.isRequired,
-  setHeroList: PropTypes.element.isRequired,
-  villainList: PropTypes.element.isRequired,
-  setVillainList: PropTypes.element.isRequired,
+  heroList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setHeroList: PropTypes.func.isRequired,
+  villainList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setVillainList: PropTypes.func.isRequired,
 };
 
 export default Game;
