@@ -1,38 +1,37 @@
 .card {
     border-radius: 0px;
-    width: 290px;
-    margin: 10px;
+    width: 200px;
+    margin: 0 30px 20px 30px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(#383838, #202020);
     cursor: pointer;
 }
 
-.card:hover {
-    box-shadow: 10px 10px 20px #202020;
+.clicked {
     transform: rotate(-3deg);
     transition: all 0.5s ease;
+    box-shadow: 0 0 20px 20px #2dffe0;
 }
+
 
 .heroAvatar {
     border-radius: 0px 0px 0 0;
-    height: 315px;
-
+    height: 10em;
     padding-top: 25px;
 }
 
 .cardBody {
-    padding: 10px 20px;
+    padding: 10px 10px;
 }
 
 .heroName {
-    font-size: 30px;
-    margin-bottom: 15px;
+    font-size: 20px;
     color: #2dffe0;
 }
 
 .cardText {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 15px;
+    margin-bottom: 5px;
     color: lightgray;
 }

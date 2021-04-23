@@ -1,45 +1,42 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import Card from './components/Card';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from 'react-router-dom';
+import Game from './components/Game';
+import Home from './components/Home';
+
 import './App.css';
 
 function App() {
-  const [hero, setHero] = useState();
-  const [vilain, setVilain] = useState();
-
-  function showCards(id, setAvatar) {
-    const url = `http://localhost:8000/api/${id}/`;
-    axios.get(url)
-      .then((response) => {
-        setAvatar(response.data);
-      });
-  }
-
   return (
-    <>
-      <div className="App">
-        <body>
-          <div className="heroAvatar">
-            <img src="https://nsa40.casimages.com/img/2021/04/15/210415123011254599.png" id="titleLogo" alt="title-logo" />
-          </div>
-          <div className="navBar">
-            <button type="button" className="buttonOnMenu1">Menu</button>
-            <button type="button" className="buttonOnMenu2">Play</button>
-            <button type="button" className="buttonOnMenu3">Collection</button>
-          </div>
-          <div className="cards">
-            {hero && <Card avatar={hero} />}
-            <button type="button" onClick={() => showCards(396, setHero)} className="drawButton">
-              Draw hero
-            </button>
-            {vilain && <Card avatar={vilain} />}
-            <button type="button" onClick={() => showCards(60, setVilain)} className="drawButton">
-              Draw villain
-            </button>
-          </div>
-        </body>
-      </div>
-    </>
+    <Router>
+      <>
+        <div className="App">
+          <body>
+            <div className="logoContent">
+              <img src="./images/logo-iboh-flat-400.png" id="titleLogo" alt="title-logo" />
+              <span id="logoBack" />
+            </div>
+            <div className="navBar">
+              <NavLink exact to="/" type="button" activeClassName="active" className="buttonLink1">Menu</NavLink>
+              <NavLink to="/game" type="button" activeClassName="active" className="buttonLink2">Play</NavLink>
+              <NavLink to="/collection" type="button" activeClassName="active" className="buttonLink3">Collection</NavLink>
+            </div>
+          </body>
+        </div>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/game">
+            <Game />
+          </Route>
+        </Switch>
+      </>
+    </Router>
   );
 }
 
