@@ -8,10 +8,12 @@
     cursor: pointer;
 }
 
-.card:hover {
+.clicked {
     transform: rotate(-3deg);
     transition: all 0.5s ease;
+    box-shadow: 0 0 20px 20px #2dffe0;
 }
+
 
 .heroAvatar {
     border-radius: 0px 0px 0 0;
