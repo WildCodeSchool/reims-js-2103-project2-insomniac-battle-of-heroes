@@ -35,7 +35,7 @@ function Game() {
         ))}
       </div>
       {heroFighterId
-      && <FightingCard avatar={heroList.find((hero) => hero.id === heroFighterId)} player />}
+      && <FightingCard avatar={heroList.find((hero) => hero.id === heroFighterId)} />}
       {villainFighterId
       && <FightingCard avatar={villainList.find((villain) => villain.id === villainFighterId)} />}
       <div className="villainSide cards">

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Card from './Card';
 import './Card.css';
 
-function FightingCard({ avatar, player }) {
+function FightingCard({ avatar }) {
   return (
     <>
-      {player && <button type="button" onClick={() => alert('Geronimo!')}>Fight</button>}
+      <button type="button" onClick={() => alert('Geronimo!')}>Fight</button>
       <Card
         avatar={avatar}
       />
@@ -21,11 +21,6 @@ FightingCard.propTypes = {
     powerstats: PropTypes.objectOf(PropTypes.string),
     image: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
-  player: PropTypes.bool,
-};
-
-FightingCard.defaultProps = {
-  player: undefined,
 };
 
 export default FightingCard;
