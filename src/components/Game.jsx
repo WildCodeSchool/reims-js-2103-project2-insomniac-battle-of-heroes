@@ -2,16 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import drawCards from './drawCards';
 import '../App.css';
+import FightingCard from './FightingCard';
 
 function Game() {
   const [heroList, setHeroList] = useState([]);
   const [villainList, setVillainList] = useState([]);
-  const [fighterId, setFighterId] = useState('');
+  const [heroFighterId, setHeroFighterId] = useState();
+  const [villainFighterId, setVillainFighterId] = useState();
 
   useEffect(() => {
     drawCards(5, setHeroList);
     drawCards(5, setVillainList);
   }, []);
+
+  useEffect(() => {
+    console.log(`${heroFighterId} versus ${villainFighterId}`);
+  }, [heroFighterId, villainFighterId]);
 
   return (
     <div className="board">
@@ -23,11 +29,15 @@ function Game() {
           <Card
             key={hero.id}
             avatar={hero}
-            fighterId={fighterId}
-            setFighterId={setFighterId}
+            fighterId={heroFighterId}
+            setFighterId={setHeroFighterId}
           />
         ))}
       </div>
+      {heroFighterId
+      && <FightingCard avatar={heroList.find((hero) => hero.id === heroFighterId)} player />}
+      {villainFighterId
+      && <FightingCard avatar={villainList.find((villain) => villain.id === villainFighterId)} />}
       <div className="villainSide cards">
         <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
           Draw villain
@@ -36,8 +46,8 @@ function Game() {
           <Card
             key={villain.id}
             avatar={villain}
-            fighterId={fighterId}
-            setFighterId={setFighterId}
+            fighterId={villainFighterId}
+            setFighterId={setVillainFighterId}
           />
         ))}
       </div>
