@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import drawCards from './drawCards';
 import '../App.css';
+import FightingCard from './FightingCard';
 
 function Game() {
   const [heroList, setHeroList] = useState([]);
   const [villainList, setVillainList] = useState([]);
-  const [fighterId, setFighterId] = useState('');
+  const [heroFighterId, setHeroFighterId] = useState();
+  const [villainFighterId, setVillainFighterId] = useState();
+  const [heroFighterStr, setHeroFighterStr] = useState();
+  const [heroFighterHp, setHeroFighterHp] = useState();
+  const [villainFighterStr, setVillainFighterStr] = useState();
+  const [villainFighterHp, setVillainFighterHp] = useState();
 
   useEffect(() => {
     drawCards(5, setHeroList);
@@ -23,11 +29,32 @@ function Game() {
           <Card
             key={hero.id}
             avatar={hero}
-            fighterId={fighterId}
-            setFighterId={setFighterId}
+            fighterId={heroFighterId}
+            setFighterId={setHeroFighterId}
           />
         ))}
       </div>
+      {heroFighterId
+      && (
+      <FightingCard
+        avatar={heroList.find((hero) => hero.id === heroFighterId)}
+        fighterStr={heroFighterStr}
+        setFighterStr={setHeroFighterStr}
+        fighterHp={heroFighterHp}
+        setFighterHp={setHeroFighterHp}
+      />
+      )}
+      {villainFighterId
+      && (
+      <FightingCard
+        avatar={villainList.find((villain) => villain.id === villainFighterId)}
+        fighterStr={villainFighterStr}
+        setFighterStr={setVillainFighterStr}
+        fighterHp={villainFighterHp}
+        setFighterHp={setVillainFighterHp}
+      />
+      )}
+      <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Test</button>
       <div className="villainSide cards">
         <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
           Draw villain
@@ -36,8 +63,8 @@ function Game() {
           <Card
             key={villain.id}
             avatar={villain}
-            fighterId={fighterId}
-            setFighterId={setFighterId}
+            fighterId={villainFighterId}
+            setFighterId={setVillainFighterId}
           />
         ))}
       </div>

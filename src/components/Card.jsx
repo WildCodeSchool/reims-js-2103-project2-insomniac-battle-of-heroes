@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
 
-function Card({ avatar, fighterId, setFighterId }) {
+function Card({
+  avatar, fighterId, setFighterId, fighterHp,
+}) {
   return (
     <>
       <div className={avatar.id === fighterId ? 'card clicked' : 'card'} role="button" tabIndex={0} onClick={() => setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
@@ -18,7 +20,7 @@ function Card({ avatar, fighterId, setFighterId }) {
             <br />
             Durability :
             {' '}
-            {avatar.powerstats.durability}
+            {fighterHp || avatar.powerstats.durability}
             <br />
             Power :
             {' '}
@@ -37,8 +39,15 @@ Card.propTypes = {
     powerstats: PropTypes.objectOf(PropTypes.string),
     image: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
-  fighterId: PropTypes.string.isRequired,
-  setFighterId: PropTypes.func.isRequired,
+  fighterId: PropTypes.string,
+  setFighterId: PropTypes.func,
+  fighterHp: PropTypes.number,
+};
+
+Card.defaultProps = {
+  fighterId: undefined,
+  setFighterId: undefined,
+  fighterHp: undefined,
 };
 
 export default Card;
