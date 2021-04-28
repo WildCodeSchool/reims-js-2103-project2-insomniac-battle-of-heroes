@@ -16,11 +16,11 @@ function NavBar() {
           <img src="./images/logo-iboh-flat-400.png" id="titleLogo" alt="title-logo" />
           <span id="logoBack" />
         </div>
-        <div className="navBar">
+        <nav className="navBar">
           <NavLink exact to="/" type="button" activeClassName="active" className="buttonLink1">Menu</NavLink>
           <NavLink to="/game" type="button" activeClassName="active" className="buttonLink2">Play</NavLink>
           <NavLink to="/collection" type="button" activeClassName="active" className="buttonLink3">Collection</NavLink>
-        </div>
+        </nav>
       </div>
       <Switch>
         <Route exact path="/">
