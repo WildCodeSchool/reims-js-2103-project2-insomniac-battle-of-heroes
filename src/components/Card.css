@@ -1,27 +1,55 @@
 .card {
     border-radius: 0px;
     width: 200px;
+    height: 320px;
     margin: 0 30px 20px 30px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(#383838, #202020);
     cursor: pointer;
+    clip-path: inset(20px 35px 130px 35px);
+    transition: all 0.2s ease;
+}
+
+.card:hover {
+    border-radius: 0px;
+    width: 200px;
+    height: 320px;
+    margin: 0 30px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#383838, #202020);
+    cursor: pointer;
+    clip-path: inset(-100px);
+    transform: rotate(-3deg);
+    transition: all 0.2s ease;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .clicked {
+    clip-path: inset(-100px);
     transform: rotate(-3deg);
     transition: all 0.5s ease;
-    box-shadow: 0 0 20px 20px #2dffe0;
+    box-shadow: 0 0 20px 10px #2dffe0;
 }
-
 
 .heroAvatar {
     border-radius: 0px 0px 0 0;
-    height: 10em;
+    height: 160px;
     padding-top: 25px;
 }
 
 .cardBody {
+    padding: 10px 10px;
+}
+
+.cardBody:hover {
     padding: 10px 10px;
 }
 

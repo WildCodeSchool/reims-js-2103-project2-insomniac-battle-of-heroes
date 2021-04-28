@@ -5,25 +5,27 @@ import './Card.css';
 function Card({ avatar, fighterId, setFighterId }) {
   return (
     <>
-      <div className={avatar.id === fighterId ? 'card clicked' : 'card'} role="button" tabIndex={0} onClick={() => setFighterId && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
-        <div>
-          <img src={avatar.image.url} alt={avatar.name} className="heroAvatar" />
-        </div>
-        <div className="cardBody">
-          <h1 className="heroName">{avatar.name}</h1>
-          <p className="cardText">
-            Strength :
-            {' '}
-            {avatar.powerstats.strength}
-            <br />
-            Durability :
-            {' '}
-            {avatar.powerstats.durability}
-            <br />
-            Power :
-            {' '}
-            {avatar.powerstats.power}
-          </p>
+      <div className="cards">
+        <div className={avatar.id === fighterId ? 'card clicked' : 'card'} role="button" tabIndex={0} onClick={() => setFighterId && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
+          <div>
+            <img src={avatar.image.url} alt={avatar.name} className="heroAvatar" />
+          </div>
+          <div className="cardBody">
+            <h1 className="heroName">{avatar.name}</h1>
+            <p className="cardText">
+              Strength :
+              {' '}
+              {avatar.powerstats.strength}
+              <br />
+              Durability :
+              {' '}
+              {avatar.powerstats.durability}
+              <br />
+              Power :
+              {' '}
+              {avatar.powerstats.power}
+            </p>
+          </div>
         </div>
       </div>
     </>

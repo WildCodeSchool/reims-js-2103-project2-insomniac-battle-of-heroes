@@ -24,15 +24,13 @@ function Game() {
 
   return (
     <>
-      <div className="gameLogoContent">
-        <Logo />
-      </div>
       <div className="gameNavBar">
         <NavBar />
       </div>
 
       <div className="board">
-        <div className="heroSide cards">
+
+        <div className="heroSide">
           {heroList.map((hero) => (
             <Card
               key={hero.id}
@@ -42,15 +40,18 @@ function Game() {
             />
           ))}
         </div>
+
         {heroFighterId
-        && <FightingCard avatar={heroList.find((hero) => hero.id === heroFighterId)} />}
+        && <FightingCard className="heroFightingCard" avatar={heroList.find((hero) => hero.id === heroFighterId)} />}
+
         <div className="gameLogoContent">
-          <img src="./images/logo-iboh-flat-400.png" id="gameTitleLogo" alt="game-title-logo" />
-          <span id="gameLogoBack" />
+          <Logo />
         </div>
+
         {villainFighterId
-        && <FightingCard avatar={villainList.find((villain) => villain.id === villainFighterId)} />}
-        <div className="villainSide cards">
+        && <FightingCard className="villainFightingCard" avatar={villainList.find((villain) => villain.id === villainFighterId)} />}
+
+        <div className="villainSide">
           {villainList.map((villain) => (
             <Card
               key={villain.id}
