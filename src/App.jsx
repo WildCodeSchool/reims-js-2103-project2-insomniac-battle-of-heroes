@@ -3,28 +3,21 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink,
 } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import './App.css';
 import Game from './components/Game';
 import Home from './components/Home';
 
-import './App.css';
-
 function App() {
   return (
-    <Router>
-      <>
-        <div className="App">
-          <div className="logoContent">
-            <img src="./images/logo-iboh-flat-400.png" id="titleLogo" alt="title-logo" />
-            <span id="logoBack" />
-          </div>
-          <div className="navBar">
-            <NavLink exact to="/" type="button" activeClassName="active" className="buttonLink1">Menu</NavLink>
-            <NavLink to="/game" type="button" activeClassName="active" className="buttonLink2">Play</NavLink>
-            <NavLink to="/collection" type="button" activeClassName="active" className="buttonLink3">Collection</NavLink>
-          </div>
-        </div>
+    <div className="App">
+      <div className="logoContent">
+        <img src="./images/logo-iboh-flat-400.png" id="titleLogo" alt="title-logo" />
+        <span id="logoBack" />
+      </div>
+      <Router>
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -33,8 +26,8 @@ function App() {
             <Game />
           </Route>
         </Switch>
-      </>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
