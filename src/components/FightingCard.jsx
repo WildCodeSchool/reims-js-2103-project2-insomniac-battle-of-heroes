@@ -4,12 +4,22 @@ import Card from './Card';
 import './Card.css';
 
 function FightingCard({
-  avatar, setFighterStr, fighterHp, setFighterHp,
+  avatar,
+  avatarList, setAvatarList, setFighterStr, fighterHp, setFighterHp, fighterId, setFighterId,
 }) {
   useEffect(() => {
     setFighterStr(avatar.powerstats.strength);
     setFighterHp(avatar.powerstats.durability);
-  }, []);
+  }, [fighterId]);
+
+  useEffect(() => {
+    if (fighterHp <= 0) {
+      setAvatarList(avatarList.filter((card) => card.id !== fighterId));
+      setFighterId();
+      setFighterHp();
+    }
+  }, [fighterHp]);
+
   return (
     <>
       <Card
@@ -28,15 +38,20 @@ FightingCard.propTypes = {
     powerstats: PropTypes.objectOf(PropTypes.string),
     image: PropTypes.objectOf(PropTypes.string),
   }).isRequired,
-  setFighterStr: PropTypes.func,
-  fighterHp: PropTypes.string,
-  setFighterHp: PropTypes.func,
-};
-
-FightingCard.defaultProps = {
-  setFighterStr: undefined,
-  fighterHp: undefined,
-  setFighterHp: undefined,
+  avatarList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      powerstats: PropTypes.objectOf(PropTypes.string),
+      image: PropTypes.objectOf(PropTypes.string),
+    }),
+  ).isRequired,
+  setAvatarList: PropTypes.func.isRequired,
+  setFighterStr: PropTypes.func.isRequired,
+  fighterHp: PropTypes.string.isRequired,
+  setFighterHp: PropTypes.func.isRequired,
+  fighterId: PropTypes.string.isRequired,
+  setFighterId: PropTypes.func.isRequired,
 };
 
 export default FightingCard;

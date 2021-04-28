@@ -10,7 +10,7 @@ function Game() {
   const [heroFighterId, setHeroFighterId] = useState();
   const [heroFighterStr, setHeroFighterStr] = useState();
   const [heroFighterHp, setHeroFighterHp] = useState();
-  const [villainPlayerHp, setVillainPlayerHp] = useState(300);
+  const [villainPlayerHp, setVillainPlayerHp] = useState();
   const [villainList, setVillainList] = useState([]);
   const [villainFighterId, setVillainFighterId] = useState();
   const [villainFighterStr, setVillainFighterStr] = useState();
@@ -46,10 +46,14 @@ function Game() {
       && (
       <FightingCard
         avatar={heroList.find((hero) => hero.id === heroFighterId)}
+        avatarList={heroList}
+        setAvatarList={setHeroList}
         fighterStr={heroFighterStr}
         setFighterStr={setHeroFighterStr}
         fighterHp={heroFighterHp}
         setFighterHp={setHeroFighterHp}
+        fighterId={heroFighterId}
+        setFighterId={setHeroFighterId}
       />
       )}
       {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
@@ -57,10 +61,14 @@ function Game() {
       && (
       <FightingCard
         avatar={villainList.find((villain) => villain.id === villainFighterId)}
+        avatarList={villainList}
+        setAvatarList={setVillainList}
         fighterStr={villainFighterStr}
         setFighterStr={setVillainFighterStr}
         fighterHp={villainFighterHp}
         setFighterHp={setVillainFighterHp}
+        fighterId={villainFighterId}
+        setFighterId={setVillainFighterId}
       />
       )}
       {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
