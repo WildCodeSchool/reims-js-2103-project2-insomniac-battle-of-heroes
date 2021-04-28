@@ -1,11 +1,19 @@
 /* eslint-disable max-len */
 import React from 'react';
+import Logo from './Logo';
+import NavBar from './NavBar';
 import './Home.css';
 
 function Home() {
   return (
     <>
       <div className="Home">
+        <div className="homeLogoContent">
+          <Logo />
+        </div>
+        <div className="homeNavBar">
+          <NavBar />
+        </div>
         <div className="rules">
           <p>
             <p className="pBold">Règles du jeu Insomniac : Battle of Heroes</p>
