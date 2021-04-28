@@ -12,7 +12,6 @@ function FightingCard({
   }, []);
   return (
     <>
-      <button type="button" onClick={() => alert('Geronimo!')}>Fight</button>
       <Card
         avatar={avatar}
         fighterHp={fighterHp}

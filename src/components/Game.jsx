@@ -5,23 +5,31 @@ import '../App.css';
 import FightingCard from './FightingCard';
 
 function Game() {
+  const [heroPlayerHp, setHeroPlayerHp] = useState();
   const [heroList, setHeroList] = useState([]);
-  const [villainList, setVillainList] = useState([]);
   const [heroFighterId, setHeroFighterId] = useState();
-  const [villainFighterId, setVillainFighterId] = useState();
   const [heroFighterStr, setHeroFighterStr] = useState();
   const [heroFighterHp, setHeroFighterHp] = useState();
+  const [villainPlayerHp, setVillainPlayerHp] = useState(300);
+  const [villainList, setVillainList] = useState([]);
+  const [villainFighterId, setVillainFighterId] = useState();
   const [villainFighterStr, setVillainFighterStr] = useState();
   const [villainFighterHp, setVillainFighterHp] = useState();
 
   useEffect(() => {
     drawCards(5, setHeroList);
     drawCards(5, setVillainList);
+    setHeroPlayerHp(300);
+    setVillainPlayerHp(300);
   }, []);
 
   return (
     <div className="board">
       <div className="heroSide cards">
+        <label htmlFor="heroPlayerHp">
+          HP :
+          {heroPlayerHp}
+        </label>
         <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton">
           Draw hero
         </button>
@@ -44,6 +52,7 @@ function Game() {
         setFighterHp={setHeroFighterHp}
       />
       )}
+      {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
       {villainFighterId
       && (
       <FightingCard
@@ -54,8 +63,12 @@ function Game() {
         setFighterHp={setVillainFighterHp}
       />
       )}
-      <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Test</button>
+      {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
       <div className="villainSide cards">
+        <label htmlFor="villainPlayerHp">
+          HP :
+          {villainPlayerHp}
+        </label>
         <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
           Draw villain
         </button>
