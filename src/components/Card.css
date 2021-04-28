@@ -1,4 +1,4 @@
-.card {
+.card  {
     border-radius: 0px;
     width: 200px;
     height: 320px;
@@ -32,9 +32,23 @@
     flex-wrap: wrap;
 }
 
-.clicked {
+.clicked{
     clip-path: inset(-100px);
     transform: rotate(-3deg);
+    transition: all 0.5s ease;
+    box-shadow: 0 0 20px 10px #2dffe0;
+}
+
+.test1 {
+    border-radius: 0px;
+    width: 200px;
+    height: 320px;
+    margin: 0 30px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#383838, #202020);
+    cursor: pointer;
+    clip-path: inset(-100px);
     transition: all 0.5s ease;
     box-shadow: 0 0 20px 10px #2dffe0;
 }

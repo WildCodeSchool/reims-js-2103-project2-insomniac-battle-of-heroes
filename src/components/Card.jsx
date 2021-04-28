@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
 
-function Card({ avatar, fighterId, setFighterId }) {
+function Card({
+  avatar, fighterId, setFighterId, className,
+}) {
+  const classNameValue = className ?? (avatar.id === fighterId ? 'card clicked' : 'card');
   return (
     <>
       <div className="cards">
-        <div className={avatar.id === fighterId ? 'card clicked' : 'card'} role="button" tabIndex={0} onClick={() => setFighterId && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
-          <div>
+        <div className={classNameValue} role="button" tabIndex={0} onClick={() => setFighterId && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
+          <div className="test">
             <img src={avatar.image.url} alt={avatar.name} className="heroAvatar" />
           </div>
           <div className="cardBody">
@@ -41,11 +44,13 @@ Card.propTypes = {
   }).isRequired,
   fighterId: PropTypes.string,
   setFighterId: PropTypes.func,
+  className: PropTypes.string,
 };
 
 Card.defaultProps = {
   fighterId: undefined,
   setFighterId: undefined,
+  className: undefined,
 };
 
 export default Card;
