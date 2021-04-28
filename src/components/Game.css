@@ -11,18 +11,6 @@
     margin: 50px;
 }
 
-/* {
-    border-radius: 0px;
-    width: 200px;
-    height: 320px;
-    margin: 0 30px 20px 30px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(#383838, #202020);
-    cursor: pointer;
-    clip-path: inset(-100px);
-} */
-
 .heroSide, .villainSide {
     display: flex;
     flex-direction: column;
