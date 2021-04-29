@@ -17,6 +17,7 @@ function Game() {
   const [villainFighterId, setVillainFighterId] = useState();
   const [villainFighterStr, setVillainFighterStr] = useState();
   const [villainFighterHp, setVillainFighterHp] = useState();
+  const [playerTurn, setPlayerTurn] = useState(true);
 
   useEffect(() => {
     drawCards(5, setHeroList);
@@ -36,10 +37,16 @@ function Game() {
             HP :
             {heroPlayerHp}
           </label>
+          <label htmlFor="PlayerTurn">
+            {playerTurn ? 'Hero ' : 'Villain '}
+            it is your turn
+          </label>
+          <button type="button" className="turnBtn" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
           {heroList.map((hero) => (
             <Card
               key={hero.id}
               avatar={hero}
+              playerTurn={playerTurn}
               fighterId={heroFighterId}
               setFighterId={setHeroFighterId}
             />
@@ -61,7 +68,7 @@ function Game() {
           setPlayerHp={setHeroPlayerHp}
         />
         )}
-        {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        {heroFighterId && villainFighterId && playerTurn && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
         <div className="gameLogoContent">
           <Logo />
         </div>
@@ -81,7 +88,7 @@ function Game() {
           setPlayerHp={setVillainPlayerHp}
         />
         )}
-        {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
+        {heroFighterId && villainFighterId && !playerTurn && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
         <div className="villainSide">
           <label htmlFor="villainPlayerHp">
             HP :
@@ -91,18 +98,23 @@ function Game() {
             <Card
               key={villain.id}
               avatar={villain}
+              playerTurn={!playerTurn}
               fighterId={villainFighterId}
               setFighterId={setVillainFighterId}
             />
           ))}
         </div>
         <div className="buttonsLine">
+          { playerTurn && (
           <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton">
             Draw hero
           </button>
+          )}
+          { !playerTurn && (
           <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
             Draw villain
           </button>
+          )}
         </div>
       </div>
     </>

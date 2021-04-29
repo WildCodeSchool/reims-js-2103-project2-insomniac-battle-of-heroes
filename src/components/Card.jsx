@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import './Card.css';
 
 function Card({
-  avatar, fighterId, setFighterId, fighterHp, className,
+  avatar, fighterId, setFighterId, fighterHp, className, playerTurn,
 }) {
   const classNameValue = className ?? (avatar.id === fighterId ? 'card clicked' : 'card');
   return (
     <>
       <div className="cards">
-        <div className={classNameValue} role="button" tabIndex={0} onClick={() => setFighterId && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
+        <div className={classNameValue} role="button" tabIndex={0} onClick={() => setFighterId && playerTurn && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
           <div className="test">
             <img src={avatar.image.url} alt={avatar.name} className="heroAvatar" />
           </div>
@@ -46,6 +46,7 @@ Card.propTypes = {
   setFighterId: PropTypes.func,
   fighterHp: PropTypes.number,
   className: PropTypes.string,
+  playerTurn: PropTypes.bool.isRequired,
 };
 
 Card.defaultProps = {
