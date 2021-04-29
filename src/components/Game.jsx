@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 import NavBar from './NavBar';
-import Card from './Card';
 import FightingCard from './FightingCard';
 import drawCards from './drawCards';
+import HeroModal from './HeroModal';
+import VillainModal from './VillainModal';
 import './Game.css';
 
 function Game() {
@@ -17,6 +18,8 @@ function Game() {
   const [villainFighterId, setVillainFighterId] = useState();
   const [villainFighterStr, setVillainFighterStr] = useState();
   const [villainFighterHp, setVillainFighterHp] = useState();
+  const [showHero, setShowHero] = useState(false);
+  const [showVillain, setShowVillain] = useState(false);
 
   useEffect(() => {
     drawCards(5, setHeroList);
@@ -36,74 +39,78 @@ function Game() {
             HP :
             {heroPlayerHp}
           </label>
-          {heroList.map((hero) => (
-            <Card
-              key={hero.id}
-              avatar={hero}
-              fighterId={heroFighterId}
-              setFighterId={setHeroFighterId}
-            />
-          ))}
+          <HeroModal
+            heroList={heroList}
+            heroFighterId={heroFighterId}
+            setHeroFighterId={setHeroFighterId}
+            show={showHero}
+            setShow={setShowHero}
+          />
         </div>
-        {heroFighterId
-        && (
-        <FightingCard
-          avatar={heroList.find((hero) => hero.id === heroFighterId)}
-          avatarList={heroList}
-          setAvatarList={setHeroList}
-          fighterStr={heroFighterStr}
-          setFighterStr={setHeroFighterStr}
-          fighterHp={heroFighterHp}
-          setFighterHp={setHeroFighterHp}
-          fighterId={heroFighterId}
-          setFighterId={setHeroFighterId}
-          playerHp={heroPlayerHp}
-          setPlayerHp={setHeroPlayerHp}
-        />
-        )}
-        {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        {!showHero && <button className="drawButton" type="button" onClick={() => setShowHero(true)}>Show Hero hand</button>}
+        <div>
+          {heroFighterId
+          && (
+          <FightingCard
+            avatar={heroList.find((hero) => hero.id === heroFighterId)}
+            avatarList={heroList}
+            setAvatarList={setHeroList}
+            fighterStr={heroFighterStr}
+            setFighterStr={setHeroFighterStr}
+            fighterHp={heroFighterHp}
+            setFighterHp={setHeroFighterHp}
+            fighterId={heroFighterId}
+            setFighterId={setHeroFighterId}
+            playerHp={heroPlayerHp}
+            setPlayerHp={setHeroPlayerHp}
+          />
+          )}
+          {heroFighterId && villainFighterId && <button className="drawButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        </div>
         <div className="gameLogoContent">
           <Logo />
         </div>
-        {villainFighterId
-        && (
-        <FightingCard
-          avatar={villainList.find((villain) => villain.id === villainFighterId)}
-          avatarList={villainList}
-          setAvatarList={setVillainList}
-          fighterStr={villainFighterStr}
-          setFighterStr={setVillainFighterStr}
-          fighterHp={villainFighterHp}
-          setFighterHp={setVillainFighterHp}
-          fighterId={villainFighterId}
-          setFighterId={setVillainFighterId}
-          playerHp={villainPlayerHp}
-          setPlayerHp={setVillainPlayerHp}
-        />
-        )}
-        {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
+        <div>
+          {villainFighterId
+          && (
+          <FightingCard
+            avatar={villainList.find((villain) => villain.id === villainFighterId)}
+            avatarList={villainList}
+            setAvatarList={setVillainList}
+            fighterStr={villainFighterStr}
+            setFighterStr={setVillainFighterStr}
+            fighterHp={villainFighterHp}
+            setFighterHp={setVillainFighterHp}
+            fighterId={villainFighterId}
+            setFighterId={setVillainFighterId}
+            playerHp={villainPlayerHp}
+            setPlayerHp={setVillainPlayerHp}
+          />
+          )}
+          {heroFighterId && villainFighterId && <button className="drawButton" type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
+        </div>
         <div className="villainSide">
           <label htmlFor="villainPlayerHp">
             HP :
             {villainPlayerHp}
           </label>
-          {villainList.map((villain) => (
-            <Card
-              key={villain.id}
-              avatar={villain}
-              fighterId={villainFighterId}
-              setFighterId={setVillainFighterId}
-            />
-          ))}
+          <VillainModal
+            villainList={villainList}
+            villainFighterId={villainFighterId}
+            setVillainFighterId={setVillainFighterId}
+            show={showVillain}
+            setShow={setShowVillain}
+          />
         </div>
-        <div className="buttonsLine">
-          <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton">
-            Draw hero
-          </button>
-          <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
-            Draw villain
-          </button>
-        </div>
+        {!showVillain && <button className="drawButton" type="button" onClick={() => setShowVillain(true)}>Show Villain hand</button>}
+      </div>
+      <div className="buttonsLine">
+        <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton">
+          Draw hero
+        </button>
+        <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
+          Draw villain
+        </button>
       </div>
     </>
   );

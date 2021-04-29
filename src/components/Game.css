@@ -21,6 +21,7 @@
 .heroSide, .villainSide {
     display: flex;
     flex-direction: column;
+    background: linear-gradient(#383838, #202020);
 }
 
 label {
