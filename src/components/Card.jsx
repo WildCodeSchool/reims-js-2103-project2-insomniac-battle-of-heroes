@@ -7,7 +7,7 @@ function Card({
 }) {
   return (
     <>
-      <div className={avatar.id === fighterId ? 'card clicked' : 'card'} role="button" tabIndex={0} onClick={() => setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
+      <div className={avatar.id === fighterId ? 'card clicked' : 'card'} role="button" tabIndex={0} onClick={() => setFighterId && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
         <div>
           <img src={avatar.image.url} alt={avatar.name} className="heroAvatar" />
         </div>
