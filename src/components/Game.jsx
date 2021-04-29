@@ -25,10 +25,6 @@ function Game() {
     setVillainPlayerHp(300);
   }, []);
 
-  useEffect(() => {
-    console.log(`${heroFighterId} versus ${villainFighterId}`);
-  }, [heroFighterId, villainFighterId]);
-
   return (
     <>
       <div className="gameNavBar">
@@ -61,6 +57,8 @@ function Game() {
           setFighterHp={setHeroFighterHp}
           fighterId={heroFighterId}
           setFighterId={setHeroFighterId}
+          playerHp={heroPlayerHp}
+          setPlayerHp={setHeroPlayerHp}
         />
         )}
         {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
@@ -79,6 +77,8 @@ function Game() {
           setFighterHp={setVillainFighterHp}
           fighterId={villainFighterId}
           setFighterId={setVillainFighterId}
+          playerHp={villainPlayerHp}
+          setPlayerHp={setVillainPlayerHp}
         />
         )}
         {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
