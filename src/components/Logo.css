@@ -1,0 +1,27 @@
+#titleLogo {
+    display: block;
+    margin: 20px auto 20px auto;
+    width: 180px;
+}
+
+#logoBack {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    animation: pulsy 3s infinite;
+}
+
+@keyframes pulsy {
+    0% {
+        box-shadow: 0 0 0 0 rgba(45, 255, 224, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 50px 150px rgba(45, 255, 224, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
+    }
+}
