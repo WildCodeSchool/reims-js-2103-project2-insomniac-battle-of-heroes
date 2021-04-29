@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Card.css';
 
 function Card({
-  avatar, fighterId, setFighterId, className,
+  avatar, fighterId, setFighterId, fighterHp, className,
 }) {
   const classNameValue = className ?? (avatar.id === fighterId ? 'card clicked' : 'card');
   return (
