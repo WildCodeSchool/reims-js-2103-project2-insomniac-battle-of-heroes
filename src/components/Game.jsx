@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 import NavBar from './NavBar';
@@ -32,15 +31,11 @@ function Game() {
 
   return (
     <>
-      <div className="gameLogoContent">
-        <Logo />
-      </div>
       <div className="gameNavBar">
         <NavBar />
       </div>
-
       <div className="board">
-        <div className="heroSide cards">
+        <div className="heroSide">
           <label htmlFor="heroPlayerHp">
             HP :
             {heroPlayerHp}
@@ -70,8 +65,7 @@ function Game() {
         )}
         {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
         <div className="gameLogoContent">
-          <img src="./images/logo-iboh-flat-400.png" id="gameTitleLogo" alt="game-title-logo" />
-          <span id="gameLogoBack" />
+          <Logo />
         </div>
         {villainFighterId
         && (
@@ -88,7 +82,7 @@ function Game() {
         />
         )}
         {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
-        <div className="villainSide cards">
+        <div className="villainSide">
           <label htmlFor="villainPlayerHp">
             HP :
             {villainPlayerHp}
@@ -102,7 +96,6 @@ function Game() {
             />
           ))}
         </div>
-
         <div className="buttonsLine">
           <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton">
             Draw hero
