@@ -1,16 +1,23 @@
-.board {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 50px;
-    min-height: 80vh;
+.gameNavBar {
+    width: 60%;
+    margin: auto;
 }
 
-.fightLine {
+.board {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    margin: 50px;
+}
+
+.heroSide, .villainSide {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: white;
 }
 
 .buttonsLine {
@@ -64,20 +71,4 @@ outline: none;
     100% {
         box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
     }
-}
-
-.heroSide, .villainSide, .cards{
-    display: flex;
-    flex-direction: column;
-    }
-    
-.cards {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-}
-
-label {
-    color: white;
 }
