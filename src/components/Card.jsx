@@ -22,7 +22,7 @@ function Card({
               <br />
               Durability :
               {' '}
-              {avatar.powerstats.durability}
+              {fighterHp ?? avatar.powerstats.durability}
               <br />
               Power :
               {' '}
@@ -44,12 +44,14 @@ Card.propTypes = {
   }).isRequired,
   fighterId: PropTypes.string,
   setFighterId: PropTypes.func,
+  fighterHp: PropTypes.number,
   className: PropTypes.string,
 };
 
 Card.defaultProps = {
   fighterId: undefined,
   setFighterId: undefined,
+  fighterHp: undefined,
   className: undefined,
 };
 
