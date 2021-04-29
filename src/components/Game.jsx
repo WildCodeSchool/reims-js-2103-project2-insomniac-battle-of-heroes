@@ -55,7 +55,8 @@ function Game() {
           ))}
         </div>
         {heroFighterId
-        && <FightingCard
+        && (
+        <FightingCard
           avatar={heroList.find((hero) => hero.id === heroFighterId)}
           avatarList={heroList}
           setAvatarList={setHeroList}
@@ -65,24 +66,27 @@ function Game() {
           setFighterHp={setHeroFighterHp}
           fighterId={heroFighterId}
           setFighterId={setHeroFighterId}
-         />}
+        />
+        )}
         {heroFighterId && villainFighterId && <button type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
         <div className="gameLogoContent">
           <img src="./images/logo-iboh-flat-400.png" id="gameTitleLogo" alt="game-title-logo" />
           <span id="gameLogoBack" />
         </div>
         {villainFighterId
-        && <FightingCard
-         avatar={villainList.find((villain) => villain.id === villainFighterId)}
-         avatarList={villainList}
-         setAvatarList={setVillainList}
-         fighterStr={villainFighterStr}
-         setFighterStr={setVillainFighterStr}
-         fighterHp={villainFighterHp}
-         setFighterHp={setVillainFighterHp}
-         fighterId={villainFighterId}
-         setFighterId={setVillainFighterId}
-        />}
+        && (
+        <FightingCard
+          avatar={villainList.find((villain) => villain.id === villainFighterId)}
+          avatarList={villainList}
+          setAvatarList={setVillainList}
+          fighterStr={villainFighterStr}
+          setFighterStr={setVillainFighterStr}
+          fighterHp={villainFighterHp}
+          setFighterHp={setVillainFighterHp}
+          fighterId={villainFighterId}
+          setFighterId={setVillainFighterId}
+        />
+        )}
         {heroFighterId && villainFighterId && <button type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
         <div className="villainSide cards">
           <label htmlFor="villainPlayerHp">
