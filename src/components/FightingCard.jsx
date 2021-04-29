@@ -8,7 +8,7 @@ function FightingCard({ avatar }) {
     <>
       <button type="button" onClick={() => alert('Geronimo!')}>Fight</button>
       <Card
-        className="test1"
+        className="fightingCard"
         avatar={avatar}
       />
     </>

@@ -1,3 +1,7 @@
+.logoContent {
+    position: relative;
+}
+    
 #titleLogo {
     display: block;
     margin: 20px auto 20px auto;
@@ -6,7 +10,7 @@
 
 #logoBack {
     position: absolute;
-    top: 120px;
+    top: 50%;
     left: 50%;
     width: 1px;
     height: 1px;
