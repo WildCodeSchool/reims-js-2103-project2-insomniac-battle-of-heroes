@@ -12,6 +12,10 @@
     transition: all 0.2s ease;
 }
 
+.card :focus {
+    clip-path: inset(20px 35px 130px 35px);
+}
+
 .card:hover {
     border-radius: 0px;
     width: 200px;
