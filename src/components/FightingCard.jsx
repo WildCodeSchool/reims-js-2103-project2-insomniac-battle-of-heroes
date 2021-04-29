@@ -24,7 +24,7 @@ function FightingCard({
   return (
     <>
       <Card
-        className="test1"
+        className="fightingCard"
         avatar={avatar}
         fighterHp={fighterHp}
         setFighterHp={setFighterHp}
