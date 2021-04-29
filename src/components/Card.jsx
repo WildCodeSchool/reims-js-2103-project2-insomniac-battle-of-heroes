@@ -20,7 +20,7 @@ function Card({
             <br />
             Durability :
             {' '}
-            {fighterHp || avatar.powerstats.durability}
+            {fighterHp ?? avatar.powerstats.durability}
             <br />
             Power :
             {' '}
