@@ -4,17 +4,18 @@ import Card from './Card';
 import './Modal.css';
 
 function Modal({
-  avatarList, avatarFighterId, setAvatarFighterId, show, setShow,
+  avatarList, avatarFighterId, setAvatarFighterId, show, setShow, playerTurn,
 }) {
   return (
     <div className={show ? 'hand' : 'hide'}>
-      <button type="button" onClick={() => setShow(false)}>X</button>
+      <button className="closeButton" type="button" onClick={() => setShow(false)}>X</button>
       {avatarList.map((hero) => (
         <Card
           key={hero.id}
           avatar={hero}
           fighterId={avatarFighterId}
           setFighterId={setAvatarFighterId}
+          playerTurn={playerTurn}
         />
       ))}
     </div>
@@ -34,6 +35,11 @@ Modal.propTypes = {
   setAvatarFighterId: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   setShow: PropTypes.func.isRequired,
+  playerTurn: PropTypes.bool,
+};
+
+Modal.defaultProps = {
+  playerTurn: false,
 };
 
 export default Modal;
