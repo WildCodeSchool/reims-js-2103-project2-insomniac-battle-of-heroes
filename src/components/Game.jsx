@@ -3,8 +3,7 @@ import Logo from './Logo';
 import NavBar from './NavBar';
 import FightingCard from './FightingCard';
 import drawCards from './drawCards';
-import HeroModal from './HeroModal';
-import VillainModal from './VillainModal';
+import Modal from './Modal';
 import './Game.css';
 
 function Game() {
@@ -39,10 +38,10 @@ function Game() {
             HP :
             {heroPlayerHp}
           </label>
-          <HeroModal
-            heroList={heroList}
-            heroFighterId={heroFighterId}
-            setHeroFighterId={setHeroFighterId}
+          <Modal
+            avatarList={heroList}
+            avatarFighterId={heroFighterId}
+            setAvatarFighterId={setHeroFighterId}
             show={showHero}
             setShow={setShowHero}
           />
@@ -94,10 +93,10 @@ function Game() {
             HP :
             {villainPlayerHp}
           </label>
-          <VillainModal
-            villainList={villainList}
-            villainFighterId={villainFighterId}
-            setVillainFighterId={setVillainFighterId}
+          <Modal
+            avatarList={villainList}
+            avatarFighterId={villainFighterId}
+            setAvatarFighterId={setVillainFighterId}
             show={showVillain}
             setShow={setShowVillain}
           />

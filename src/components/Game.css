@@ -18,14 +18,14 @@
     transform: translate(-50%, -50%);
 }
 
+label {
+    color: white;
+}
+
 .heroSide, .villainSide {
     display: flex;
     flex-direction: column;
     background: linear-gradient(#383838, #202020);
-}
-
-label {
-    color: white;
 }
 
 .buttonsLine {
