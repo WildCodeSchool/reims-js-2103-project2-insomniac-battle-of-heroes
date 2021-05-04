@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Logo from './Logo';
 import NavBar from './NavBar';
 import Modal from './Modal';
+import Card from './Card';
 import FightingCard from './FightingCard';
 import drawCards from './drawCards';
 import './Game.css';
@@ -17,8 +18,6 @@ function Game() {
   const [villainFighterId, setVillainFighterId] = useState();
   const [villainFighterStr, setVillainFighterStr] = useState();
   const [villainFighterHp, setVillainFighterHp] = useState();
-  const [showHero, setShowHero] = useState(false);
-  const [showVillain, setShowVillain] = useState(false);
   const [playerTurn, setPlayerTurn] = useState(true);
 
   useEffect(() => {
@@ -47,15 +46,17 @@ function Game() {
             it is your turn
           </label>
           <button type="button" className="turnBtn" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
-          <Modal
-            avatarList={heroList}
-            avatarFighterId={heroFighterId}
-            setAvatarFighterId={setHeroFighterId}
-            playerTurn={playerTurn}
-            show={showHero}
-            setShow={setShowHero}
-          />
-          {!showHero && <button className="drawButton" id="showHeroHandButton" type="button" onClick={() => setShowHero(true)}>Show Hero hand</button>}
+          <Modal buttonContent="Hero's hand">
+            {heroList.map((hero) => (
+              <Card
+                key={hero.id}
+                avatar={hero}
+                playerTurn={playerTurn}
+                fighterId={heroFighterId}
+                setFighterId={setHeroFighterId}
+              />
+            ))}
+          </Modal>
         </div>
         <div id="heroFightingCard">
           {heroFighterId
@@ -106,15 +107,17 @@ function Game() {
           <span className="red">&#9829;</span>
         </label>
         <div className="villainSide">
-          <Modal
-            avatarList={villainList}
-            avatarFighterId={villainFighterId}
-            setAvatarFighterId={setVillainFighterId}
-            playerTurn={!playerTurn}
-            show={showVillain}
-            setShow={setShowVillain}
-          />
-          {!showVillain && <button className="drawButton" id="showVillainHandButton" type="button" onClick={() => setShowVillain(true)}>Show Villain hand</button>}
+          <Modal buttonContent="Villain's hand">
+            {villainList.map((villain) => (
+              <Card
+                key={villain.id}
+                avatar={villain}
+                playerTurn={!playerTurn}
+                fighterId={villainFighterId}
+                setFighterId={setVillainFighterId}
+              />
+            ))}
+          </Modal>
         </div>
         <div className="buttonsLine">
           { playerTurn && (
@@ -128,15 +131,6 @@ function Game() {
           </button>
           )}
         </div>
-        {!showVillain && <button className="drawButton" type="button" onClick={() => setShowVillain(true)}>Show Villain hand</button>}
-      </div>
-      <div className="buttonsLine">
-        <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton">
-          Draw hero
-        </button>
-        <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton">
-          Draw villain
-        </button>
       </div>
     </>
   );
