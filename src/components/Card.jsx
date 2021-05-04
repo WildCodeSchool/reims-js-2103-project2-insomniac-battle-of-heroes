@@ -46,7 +46,7 @@ Card.propTypes = {
   setFighterId: PropTypes.func,
   fighterHp: PropTypes.number,
   className: PropTypes.string,
-  playerTurn: PropTypes.bool.isRequired,
+  playerTurn: PropTypes.bool,
 };
 
 Card.defaultProps = {
@@ -54,6 +54,7 @@ Card.defaultProps = {
   setFighterId: undefined,
   fighterHp: undefined,
   className: undefined,
+  playerTurn: undefined,
 };
 
 export default Card;

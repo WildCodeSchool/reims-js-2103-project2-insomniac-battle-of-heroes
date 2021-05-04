@@ -8,8 +8,8 @@ function FightingCard({
   avatarList, setAvatarList, setFighterStr, fighterHp, setFighterHp, fighterId, setFighterId,
 }) {
   useEffect(() => {
-    setFighterStr(avatar.powerstats.strength);
-    setFighterHp(avatar.powerstats.durability);
+    setFighterStr(parseInt(avatar.powerstats.strength, 10));
+    setFighterHp(parseInt(avatar.powerstats.durability, 10));
   }, [fighterId]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ FightingCard.propTypes = {
   ).isRequired,
   setAvatarList: PropTypes.func.isRequired,
   setFighterStr: PropTypes.func.isRequired,
-  fighterHp: PropTypes.string,
+  fighterHp: PropTypes.number,
   setFighterHp: PropTypes.func.isRequired,
   fighterId: PropTypes.string.isRequired,
   setFighterId: PropTypes.func.isRequired,

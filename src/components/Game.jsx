@@ -84,7 +84,7 @@ function Game() {
           id="heroAttackButton"
           type="button"
           onClick={function heroAttack() {
-            setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10));
+            setVillainFighterHp(villainFighterHp - heroFighterStr);
             endTurn();
           }}
         >
@@ -117,7 +117,7 @@ function Game() {
             id="villainAttackButton"
             type="button"
             onClick={function villainAttack() {
-              setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10));
+              setHeroFighterHp(heroFighterHp - villainFighterStr);
               endTurn();
             }}
           >
