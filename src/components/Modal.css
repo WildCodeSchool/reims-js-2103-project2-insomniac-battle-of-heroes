@@ -1,0 +1,28 @@
+.modalContent {
+    min-width: 50%;
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(#383838, #202020);
+    z-index: 1;
+}
+
+.closeButton {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 50px;
+    height: 50px;
+    background-color: #383838;
+    border: 4px solid #2dffe0;
+    color: #2dffe0;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-left: -15px;
+    margin-top: -15px;
+    outline: none;
+}

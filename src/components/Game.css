@@ -4,35 +4,88 @@
 }
 
 .board {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 50px;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1px 1px 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+        "heroSide heroPlayerHp . villainPlayerHp villainSide"
+        "heroSide heroFightingCard . villainFightingCard villainSide"
+        "heroSide . gameLogoContent . villainSide"
+        "heroSide heroAttackButton . villainAttackButton villainSide"
+        "heroSide . buttonsLine . villainSide";
 }
 
+#heroAttackButton { grid-area: heroAttackButton; }
+#villainAttackButton { grid-area: villainAttackButton; }
+
 .gameLogoContent {
+    grid-area: gameLogoContent;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.heroSide, .villainSide {
-    display: flex;
-    flex-direction: column;
+#heroFightingCard {
+    grid-area: heroFightingCard;
 }
 
-label {
+#villainFightingCard {
+    grid-area: villainFightingCard;
+}
+
+#heroPlayerHp {
+    grid-area: heroPlayerHp;
+    color: white;
+    margin: auto;
+    color: #2dffe0;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+#villainPlayerHp {
+    grid-area: villainPlayerHp;
+    color: white;
+    margin: auto;
+    color: #2dffe0;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.red {
+    color: red;
+}
+
+.white {
     color: white;
 }
 
+.heroSide {
+    grid-area: heroSide;
+    margin: 50px;
+}
+
+.villainSide {
+    grid-area: villainSide;
+    margin: 50px;
+}
+
 .buttonsLine {
+    grid-area: buttonsLine;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
     margin: 50px;
+}
+
+#drawHeroButton {
+    margin: 0 10px 0 0;
+}
+
+#drawVillainButton {
+    margin: 0 0 0 10px;
 }
 
 .drawButton {
