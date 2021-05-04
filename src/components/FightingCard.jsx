@@ -50,12 +50,16 @@ FightingCard.propTypes = {
   ).isRequired,
   setAvatarList: PropTypes.func.isRequired,
   setFighterStr: PropTypes.func.isRequired,
-  fighterHp: PropTypes.string.isRequired,
+  fighterHp: PropTypes.string,
   setFighterHp: PropTypes.func.isRequired,
   fighterId: PropTypes.string.isRequired,
   setFighterId: PropTypes.func.isRequired,
   playerHp: PropTypes.number.isRequired,
   setPlayerHp: PropTypes.func.isRequired,
+};
+
+FightingCard.defaultProps = {
+  fighterHp: undefined,
 };
 
 export default FightingCard;
