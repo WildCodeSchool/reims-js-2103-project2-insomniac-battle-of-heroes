@@ -146,12 +146,12 @@ function Game() {
           </Modal>
         </div>
         <div className="buttonsLine">
-          { playerTurn && (
+          { playerTurn && (heroList.length < 5) && (
           <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton" id="drawHeroButton">
             Draw hero
           </button>
           )}
-          { !playerTurn && (
+          { !playerTurn && (villainList.length < 5) && (
           <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton" id="drawVillainButton">
             Draw villain
           </button>
