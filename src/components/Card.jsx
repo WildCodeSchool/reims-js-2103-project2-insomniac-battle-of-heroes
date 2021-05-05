@@ -6,6 +6,21 @@ function Card({
   avatar, fighterId, setFighterId, fighterHp, className, playerTurn,
 }) {
   const classNameValue = className ?? (avatar.id === fighterId ? 'card clicked' : 'card');
+
+  const durabilityClass = () => {
+    if (fighterHp === avatar.powerstats.durability) {
+      return 'greenText';
+    }
+    if (fighterHp <= avatar.powerstats.durability * 0.75
+      && fighterHp > avatar.powerstats.durability * 0.25) {
+      return 'orangeText';
+    }
+    if (fighterHp <= avatar.powerstats.durability * 0.25) {
+      return 'redText';
+    }
+    return '';
+  };
+
   return (
     <>
       <div className="cards">
@@ -20,9 +35,19 @@ function Card({
               {' '}
               {avatar.powerstats.strength}
               <br />
-              Durability :
-              {' '}
-              {fighterHp ?? avatar.powerstats.durability}
+              <p className={`durability ${durabilityClass()}`}>
+                Durability :
+                {' '}
+                {fighterHp ?? avatar.powerstats.durability}
+              </p>
+              <meter
+                min="0"
+                max={avatar.powerstats.durability}
+                low={avatar.powerstats.durability * 0.25}
+                high={avatar.powerstats.durability * 0.75}
+                optimum={avatar.powerstats.durability}
+                value={fighterHp ?? avatar.powerstats.durability}
+              />
               <br />
               Power :
               {' '}

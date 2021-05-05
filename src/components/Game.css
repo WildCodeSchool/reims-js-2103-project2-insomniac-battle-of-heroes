@@ -10,15 +10,12 @@
     grid-template-rows: 1fr 2fr 1px 1px 1fr;
     gap: 0px 0px;
     grid-template-areas:
-        "heroSide heroPlayerHp . villainPlayerHp villainSide"
-        "heroSide heroFightingCard . villainFightingCard villainSide"
-        "heroSide . gameLogoContent . villainSide"
-        "heroSide heroAttackButton . villainAttackButton villainSide"
-        "heroSide . buttonsLine . villainSide";
+        "heroSide heroPlayerHp playerTurn villainPlayerHp villainSide"
+        ". heroFightingCard . villainFightingCard ."
+        ". . gameLogoContent . ."
+        ". . . . ."
+        ". . . . .";
 }
-
-#heroAttackButton { grid-area: heroAttackButton; }
-#villainAttackButton { grid-area: villainAttackButton; }
 
 .gameLogoContent {
     grid-area: gameLogoContent;
@@ -41,7 +38,7 @@
     color: white;
     margin: auto;
     color: #2dffe0;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
 }
 
@@ -50,7 +47,7 @@
     color: white;
     margin: auto;
     color: #2dffe0;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
 }
 
@@ -81,11 +78,11 @@
 }
 
 #drawHeroButton {
-    margin: 0 10px 0 0;
+    margin: auto 10px;
 }
 
 #drawVillainButton {
-    margin: 0 0 0 10px;
+    margin: auto 10px;
 }
 
 .button {
@@ -103,7 +100,7 @@ font-weight: 500;
 cursor: pointer;
 }
 
-.drawButton:hover {
+.button:hover {
 box-shadow: 
     inset -3.5em 0 0 0 #2dffe0,
     inset 3.5em 0 0 0 #2dffe0;
@@ -111,7 +108,7 @@ transition: all 0.3s ease;
 color: #202020;
 }
 
-.drawButton:active, .drawButton:focus {
+.button:active, .button:focus {
 color: #202020;
 background-color: #2dffe0;
 box-shadow: 
@@ -133,9 +130,56 @@ outline: none;
     }
 }
 
+.redButton {
+    display: block;
+    margin: 0 auto 20px auto;
+    padding: 5px;
+    width: 120px;
+    height: 120px;
+    background-color: transparent;
+    border: 4px solid red;
+    color: white;
+    border-radius: 80px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    }
+    
+    .redButton:hover {
+    box-shadow: 
+        inset -3.5em 0 0 0 red,
+        inset 3.5em 0 0 0 red;
+    transition: all 0.3s ease;
+    color: white;
+    }
+    
+    .redButton:active, .redButton:focus {
+    color: white;
+    background-color: red;
+    box-shadow: 
+        inset -3.5em 0 0 0 red,
+        inset 3.5em 0 0 0 red;
+        animation: redPulse 1s;
+    outline: none;
+    }
+    
+    @keyframes redPulse {
+        0% {
+            box-shadow: 0 0 0 0 red;
+        }
+        70% {
+            box-shadow: 0 0 0 30px rgba(45, 255, 224, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
+        }
+    }
+
 .playerTurn {
+    grid-area: playerTurn;
     color: white;
     margin: auto;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 500;
+    line-height: 80px;
 }
