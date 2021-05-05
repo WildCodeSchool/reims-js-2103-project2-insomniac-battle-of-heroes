@@ -5,6 +5,7 @@ import Modal from './Modal';
 import Card from './Card';
 import FightingCard from './FightingCard';
 import drawCards from './drawCards';
+import powerStrike from './powerStrike';
 import './Game.css';
 
 function Game() {
@@ -71,7 +72,7 @@ function Game() {
             <button type="button" onClick={() => drawCards(1, setHeroList)} className="button" id="drawHeroButton">
               Draw hero
             </button>
-            })
+            )}
           </Modal>
         </div>
         <div id="heroFightingCard">
@@ -91,7 +92,7 @@ function Game() {
             setPlayerHp={setHeroPlayerHp}
           />
           )}
-        </div>        
+        </div>
         {heroFighterId && villainFighterId && playerTurn && (
         <button
           className="button"
@@ -103,6 +104,18 @@ function Game() {
           }}
         >
           Hero attack
+        </button>
+        )}
+        {heroFighterId && villainFighterId && playerTurn && (
+        <button
+          className="button"
+          type="button"
+          onClick={function heroPowerAttack() {
+            setVillainFighterHp(villainFighterHp - powerStrike(heroFighterStr));
+            endTurn();
+          }}
+        >
+          Hero Power Strike
         </button>
         )}
         <div className="gameLogoContent">
@@ -138,6 +151,18 @@ function Game() {
             Villain attack
           </button>
           )}
+          {heroFighterId && villainFighterId && !playerTurn && (
+          <button
+            className="button"
+            type="button"
+            onClick={function villainPowerAttack() {
+              setHeroFighterHp(heroFighterHp - powerStrike(villainFighterStr));
+              endTurn();
+            }}
+          >
+            Villain Power Strike
+          </button>
+          )}
         </div>
         <label className="hpDisplay" id="villainPlayerHp" htmlFor="villainPlayerHp">
           Villain HP :
@@ -166,13 +191,18 @@ function Game() {
                 setFighterId={setVillainFighterId}
               />
             ))}
-            { !playerTurn && (villainList.length < 5) && (  
+            { !playerTurn && (villainList.length < 5) && (
             <button type="button" onClick={() => drawCards(1, setVillainList)} className="button" id="drawVillainButton">
               Draw villain
             </button>
             )}
           </Modal>
         </div>
+        {(heroPlayerHp <= 200 || villainPlayerHp <= 200) && (
+          <Modal show>
+            <h1>Player win</h1>
+          </Modal>
+        )}
       </div>
     </>
   );
