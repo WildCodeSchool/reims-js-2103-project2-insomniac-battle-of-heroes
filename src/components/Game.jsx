@@ -48,7 +48,7 @@ function Game() {
             it is your turn
           </label>
           <button type="button" className="turnBtn" onClick={() => endTurn()}>End Turn</button>
-          <Modal buttonContent="Hero's hand">
+          <Modal buttonContent="Hero's hand" buttonShow={playerTurn}>
             {heroList.map((hero) => (
               <Card
                 key={hero.id}
@@ -133,7 +133,7 @@ function Game() {
           <span className="red">&#9829;</span>
         </label>
         <div className="villainSide">
-          <Modal buttonContent="Villain's hand">
+          <Modal buttonContent="Villain's hand" buttonShow={!playerTurn}>
             {villainList.map((villain) => (
               <Card
                 key={villain.id}
