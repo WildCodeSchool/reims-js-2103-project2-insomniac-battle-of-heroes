@@ -10,7 +10,7 @@ function Card({
     <>
       <div className="cards">
         <div className={classNameValue} role="button" tabIndex={0} onClick={() => setFighterId && playerTurn && setFighterId(avatar.id)} onKeyDown={() => setFighterId(avatar.id)}>
-          <div className="test">
+          <div>
             <img src={avatar.image.url} alt={avatar.name} className="heroAvatar" />
           </div>
           <div className="cardBody">

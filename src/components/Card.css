@@ -6,7 +6,6 @@
     flex-direction: column;
     background: linear-gradient(#383838, #202020);
     cursor: pointer;
-    clip-path: inset(20px 35px 130px 35px);
     transform: scale(0.9);
     transition: all 0.2s ease;
     margin: 1rem;
@@ -17,7 +16,6 @@
 }
 
 .card:hover {
-    clip-path: inset(-100px);
     transform: rotate(-3deg) scale(0.9);
     z-index: 1;
 }

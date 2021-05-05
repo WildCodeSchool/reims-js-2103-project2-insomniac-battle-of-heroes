@@ -88,7 +88,7 @@
     margin: 0 0 0 10px;
 }
 
-.drawButton {
+.button {
 display: block;
 margin: 0 auto 20px auto;
 padding: 5px;
@@ -131,4 +131,11 @@ outline: none;
     100% {
         box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
     }
+}
+
+.playerTurn {
+    color: white;
+    margin: auto;
+    font-size: 30px;
+    font-weight: 500;
 }
