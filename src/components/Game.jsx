@@ -77,6 +77,16 @@ function Game() {
           )}
         </div>
         {heroFighterId && villainFighterId && playerTurn && <button className="drawButton" id="heroAttackButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        <button
+          className="button"
+          type="button"
+          onClick={function heroSacrifice() {
+            setHeroFighterHp(0);
+            drawCards(6 - heroList.length, setHeroList);
+          }}
+        >
+          Sacrifice
+        </button>
         <div className="gameLogoContent">
           <Logo />
         </div>
@@ -98,6 +108,18 @@ function Game() {
           />
           )}
           {heroFighterId && villainFighterId && !playerTurn && <button className="drawButton" id="villainAttackButton" type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
+          {heroFighterId && villainFighterId && !playerTurn && (
+          <button
+            className="button"
+            type="button"
+            onClick={function villainSacrifice() {
+              setVillainFighterHp(0);
+              drawCards(6 - villainList.length, setVillainList);
+            }}
+          >
+            Sacrifice
+          </button>
+          )}
         </div>
         <label className="hpDisplay" id="villainPlayerHp" htmlFor="villainPlayerHp">
           Villain HP :
