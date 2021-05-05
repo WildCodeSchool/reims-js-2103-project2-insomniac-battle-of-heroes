@@ -91,11 +91,11 @@
 }
 
 #drawHeroButton {
-    margin: 0 10px 0 0;
+    margin-right: 10px;
 }
 
 #drawVillainButton {
-    margin: 0 0 0 10px;
+    margin-right: 10px;
 }
 
 .button {
@@ -112,7 +112,7 @@ font-weight: 500;
 cursor: pointer;
 }
 
-.drawButton:hover {
+.button:hover {
 box-shadow: 
     inset -3.5em 0 0 0 #2dffe0,
     inset 3.5em 0 0 0 #2dffe0;
@@ -120,7 +120,7 @@ transition: all 0.3s ease;
 color: #202020;
 }
 
-.drawButton:active, .drawButton:focus {
+.button:active, .button:focus {
 color: #202020;
 background-color: #2dffe0;
 box-shadow: 
@@ -155,33 +155,33 @@ outline: none;
     font-weight: 500;
     cursor: pointer;
     }
-    
-    .redButton:hover {
-    box-shadow: 
-        inset -3.5em 0 0 0 red,
-        inset 3.5em 0 0 0 red;
-    transition: all 0.3s ease;
-    color: white;
+
+.redButton:hover {
+box-shadow: 
+    inset -3.5em 0 0 0 red,
+    inset 3.5em 0 0 0 red;
+transition: all 0.3s ease;
+color: white;
+}
+
+.redButton:active, .redButton:focus {
+color: white;
+background-color: red;
+box-shadow: 
+    inset -3.5em 0 0 0 red,
+    inset 3.5em 0 0 0 red;
+    animation: redPulse 1s;
+outline: none;
+}
+
+@keyframes redPulse {
+    0% {
+        box-shadow: 0 0 0 0 red;
     }
-    
-    .redButton:active, .redButton:focus {
-    color: white;
-    background-color: red;
-    box-shadow: 
-        inset -3.5em 0 0 0 red,
-        inset 3.5em 0 0 0 red;
-        animation: redPulse 1s;
-    outline: none;
+    70% {
+        box-shadow: 0 0 0 30px rgba(45, 255, 224, 0);
     }
-    
-    @keyframes redPulse {
-        0% {
-            box-shadow: 0 0 0 0 red;
-        }
-        70% {
-            box-shadow: 0 0 0 30px rgba(45, 255, 224, 0);
-        }
-        100% {
-            box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
-        }
+    100% {
+        box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
     }
+}
