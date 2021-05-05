@@ -5,6 +5,7 @@ import Modal from './Modal';
 import Card from './Card';
 import FightingCard from './FightingCard';
 import drawCards from './drawCards';
+import dmgBonusAlt from './BonusButtons';
 import './Game.css';
 
 function Game() {
@@ -39,17 +40,13 @@ function Game() {
           <span className="white">{heroPlayerHp}</span>
           {' '}
           <span className="red">&#9829;</span>
-          <meter
-            id="fuel"
-            min="0"
-            max="300"
-            low="75"
-            high="225"
-            optimum="300"
-            value={heroPlayerHp}
-          />
         </label>
         <div className="heroSide">
+          <label htmlFor="PlayerTurn">
+            {playerTurn ? 'Hero ' : 'Villain '}
+            it is your turn
+          </label>
+          <button type="button" className="turnBtn" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
           <Modal buttonContent="Hero's hand">
             {heroList.map((hero) => (
               <Card
@@ -60,11 +57,6 @@ function Game() {
                 setFighterId={setHeroFighterId}
               />
             ))}
-            { playerTurn && (heroList.length < 5) && (
-            <button type="button" onClick={() => drawCards(1, setHeroList)} className="button" id="drawHeroButton">
-              Draw hero
-            </button>
-            })
           </Modal>
         </div>
         <div id="heroFightingCard">
@@ -85,12 +77,8 @@ function Game() {
           />
           )}
         </div>
-        {heroFighterId && villainFighterId && playerTurn && <button className="button" id="heroAttackButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
-        <label className="playerTurn" htmlFor="PlayerTurn">
-          {playerTurn ? 'Hero ' : 'Villain '}
-          it&apos;s your turn !
-        </label>
-        <button type="button" className="button" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
+        {heroFighterId && villainFighterId && playerTurn && <button className="drawButton" id="heroAttackButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        {heroFighterId && villainFighterId && playerTurn && <button className="drawButton" type="button" onClick={() => setVillainFighterHp(villainFighterHp - dmgBonusAlt(heroFighterStr))}>Hero Overload</button>}
         <div className="gameLogoContent">
           <Logo />
         </div>
@@ -111,7 +99,7 @@ function Game() {
             setPlayerHp={setVillainPlayerHp}
           />
           )}
-          {heroFighterId && villainFighterId && !playerTurn && <button className="button" id="villainAttackButton" type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
+          {heroFighterId && villainFighterId && !playerTurn && <button className="drawButton" id="villainAttackButton" type="button" onClick={() => setHeroFighterHp(parseInt(heroFighterHp, 10) - parseInt(villainFighterStr, 10))}>Villain attack</button>}
         </div>
         <label className="hpDisplay" id="villainPlayerHp" htmlFor="villainPlayerHp">
           Villain HP :
@@ -119,15 +107,6 @@ function Game() {
           <span className="white">{villainPlayerHp}</span>
           {' '}
           <span className="red">&#9829;</span>
-          <meter
-            id="fuel"
-            min="0"
-            max="300"
-            low="75"
-            high="225"
-            optimum="300"
-            value={villainPlayerHp}
-          />
         </label>
         <div className="villainSide">
           <Modal buttonContent="Villain's hand">
@@ -140,12 +119,19 @@ function Game() {
                 setFighterId={setVillainFighterId}
               />
             ))}
-            { !playerTurn && (villainList.length < 5) && (  
-            <button type="button" onClick={() => drawCards(1, setVillainList)} className="button" id="drawVillainButton">
-              Draw villain
-            </button>
-            )}
           </Modal>
+        </div>
+        <div className="buttonsLine">
+          { playerTurn && (
+          <button type="button" onClick={() => drawCards(1, setHeroList)} className="drawButton" id="drawHeroButton">
+            Draw hero
+          </button>
+          )}
+          { !playerTurn && (
+          <button type="button" onClick={() => drawCards(1, setVillainList)} className="drawButton" id="drawVillainButton">
+            Draw villain
+          </button>
+          )}
         </div>
       </div>
     </>
