@@ -16,8 +16,8 @@ function FightingCard({
     if (fighterHp <= 0) {
       setAvatarList(avatarList.filter((card) => card.id !== fighterId));
       setPlayerHp(playerHp - avatar.powerstats.power);
-      setFighterId();
       setFighterHp();
+      setFighterId();
     }
   }, [fighterHp]);
 
