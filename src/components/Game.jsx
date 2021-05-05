@@ -60,9 +60,11 @@ function Game() {
                 setFighterId={setHeroFighterId}
               />
             ))}
+            { playerTurn && (heroList.length < 5) && (
             <button type="button" onClick={() => drawCards(1, setHeroList)} className="button" id="drawHeroButton">
               Draw hero
             </button>
+            })
           </Modal>
         </div>
         <div id="heroFightingCard">
@@ -138,9 +140,11 @@ function Game() {
                 setFighterId={setVillainFighterId}
               />
             ))}
+            { !playerTurn && (villainList.length < 5) && (  
             <button type="button" onClick={() => drawCards(1, setVillainList)} className="button" id="drawVillainButton">
               Draw villain
             </button>
+            )}
           </Modal>
         </div>
       </div>
