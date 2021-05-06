@@ -39,7 +39,8 @@ function Game() {
 
         <div className="heroSHandButton">
 
-          <Modal buttonContent="Hero's hand" buttonShow={playerTurn}>
+          {playerTurn && (
+          <Modal buttonContent="Hero's hand">
             {heroList.map((hero) => (
               <Card
                 key={hero.id}
@@ -49,12 +50,13 @@ function Game() {
                 setFighterId={setHeroFighterId}
               />
             ))}
-            { playerTurn && (heroList.length < 5) && (
+            { (heroList.length < 5) && (
             <button className="button" id="drawHeroButton" type="button" onClick={() => drawCards(1, setHeroList)}>
               Draw hero
             </button>
             )}
           </Modal>
+          )}
         </div>
 
         <label id="heroPlayerHp" htmlFor="heroPlayerHp">
@@ -107,7 +109,6 @@ function Game() {
         </button>
         )}
 
-        </div>
         {heroFighterId && villainFighterId && playerTurn && <button className="button" id="heroAttackButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
         <div className="playerTurn">
           <label htmlFor="PlayerTurn">
@@ -116,7 +117,7 @@ function Game() {
           </label>
           <button type="button" className="redButton" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
         </div>
-        
+
         <button
           className="button"
           type="button"
@@ -128,7 +129,7 @@ function Game() {
           Sacrifice
         </button>
 
-         <label className="playerTurn" htmlFor="PlayerTurn">
+        <label className="playerTurn" htmlFor="PlayerTurn">
           {playerTurn ? 'Hero ' : 'Villain '}
           it&apos;s your turn !
         </label>
@@ -139,7 +140,8 @@ function Game() {
         </div>
 
         <div className="villainSHandButton">
-          <Modal buttonContent="Villain's hand" buttonShow={!playerTurn}>
+          {!playerTurn && (
+          <Modal buttonContent="Villain's hand">
             {villainList.map((villain) => (
               <Card
                 key={villain.id}
@@ -149,12 +151,13 @@ function Game() {
                 setFighterId={setVillainFighterId}
               />
             ))}
-            { !playerTurn && (villainList.length < 5) && (
+            { (villainList.length < 5) && (
             <button className="button" id="drawVillainButton" type="button" onClick={() => drawCards(1, setVillainList)}>
               Draw villain
             </button>
             )}
           </Modal>
+          )}
         </div>
 
         <label id="villainPlayerHp" htmlFor="villainPlayerHp">
@@ -206,9 +209,9 @@ function Game() {
           >
             Villain attack
           </button>
-          )}
-          
-          {heroFighterId && villainFighterId && !playerTurn && (
+        )}
+
+        {heroFighterId && villainFighterId && !playerTurn && (
           <button
             className="button"
             type="button"
@@ -218,9 +221,8 @@ function Game() {
             }}
           >
             Sacrifice
-          </button>          
-          )}
-        </div>
+          </button>
+        )}
 
         <label className="hpDisplay" id="villainPlayerHp" htmlFor="villainPlayerHp">
           Villain HP :
@@ -251,13 +253,22 @@ function Game() {
                 setFighterId={setVillainFighterId}
               />
             ))}
-            { !playerTurn && (villainList.length < 5) && (  
+            { !playerTurn && (villainList.length < 5) && (
             <button type="button" onClick={() => drawCards(1, setVillainList)} className="button" id="drawVillainButton">
               Draw villain
             </button>
             )}
           </Modal>
         </div>
+        {(heroPlayerHp <= 0 || villainPlayerHp <= 0) && (
+        <Modal isPersistent>
+          {heroPlayerHp <= 0 && <h1>Villain win</h1>}
+          {villainPlayerHp <= 0 && <h1>Hero win</h1>}
+          <button type="button" onClick={() => window.location.reload(true)}>
+            Play again
+          </button>
+        </Modal>
+        )}
       </div>
     </>
   );
