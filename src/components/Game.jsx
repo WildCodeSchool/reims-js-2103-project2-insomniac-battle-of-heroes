@@ -105,7 +105,16 @@ function Game() {
           Hero attack
         </button>
         )}
-        
+
+        {heroFighterId && villainFighterId && playerTurn && <button className="button" id="heroAttackButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        <div className="playerTurn">
+          <label htmlFor="PlayerTurn">
+            {playerTurn ? 'Hero ' : 'Villain '}
+            it&apos;s your turn !
+          </label>
+          <button type="button" className="redButton" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
+        </div>
+
         <button
           className="button"
           type="button"
@@ -117,11 +126,6 @@ function Game() {
           Sacrifice
         </button>
 
-         <label className="playerTurn" htmlFor="PlayerTurn">
-          {playerTurn ? 'Hero ' : 'Villain '}
-          it&apos;s your turn !
-        </label>
-        <button type="button" className="redButton" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
         <div className="gameLogoContent">
           <Logo />
         </div>
@@ -194,9 +198,9 @@ function Game() {
           >
             Villain attack
           </button>
-          )}
-          
-          {heroFighterId && villainFighterId && !playerTurn && (
+        )}
+
+        {heroFighterId && villainFighterId && !playerTurn && (
           <button
             className="button"
             type="button"
@@ -206,9 +210,8 @@ function Game() {
             }}
           >
             Sacrifice
-          </button>          
-          )}
-        </div>
+          </button>
+        )}
 
         <label className="hpDisplay" id="villainPlayerHp" htmlFor="villainPlayerHp">
           Villain HP :
@@ -238,7 +241,7 @@ function Game() {
                 setFighterId={setVillainFighterId}
               />
             ))}
-            { !playerTurn && (villainList.length < 5) && (  
+            { !playerTurn && (villainList.length < 5) && (
             <button type="button" onClick={() => drawCards(1, setVillainList)} className="button" id="drawVillainButton">
               Draw villain
             </button>
