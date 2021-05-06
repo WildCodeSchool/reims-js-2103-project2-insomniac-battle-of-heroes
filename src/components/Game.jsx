@@ -97,17 +97,30 @@ function Game() {
         </div>
 
         {heroFighterId && villainFighterId && playerTurn && (
-        <button
-          className="button"
-          id="heroAttackButton"
-          type="button"
-          onClick={function heroAttack() {
-            setVillainFighterHp(villainFighterHp - heroFighterStr);
-            endTurn();
-          }}
-        >
-          Hero attack
-        </button>
+          <div className="heroActionButtons">
+            <button
+              className="button"
+              id="heroAttackButton"
+              type="button"
+              onClick={function heroAttack() {
+                setVillainFighterHp(villainFighterHp - heroFighterStr);
+                endTurn();
+              }}
+            >
+              Hero attack
+            </button>
+            <button
+              className="redButton"
+              id="heroSacrificeButton"
+              type="button"
+              onClick={function heroSacrifice() {
+                setHeroFighterHp(0);
+                drawCards(6 - heroList.length, setHeroList);
+              }}
+            >
+              Hero sacrifice
+            </button>
+          </div>
         )}
 
         {heroFighterId && villainFighterId && playerTurn && (
@@ -207,17 +220,30 @@ function Game() {
         </div>
 
         {heroFighterId && villainFighterId && !playerTurn && (
-          <button
-            className="button"
-            id="villainAttackButton"
-            type="button"
-            onClick={function villainAttack() {
-              setHeroFighterHp(heroFighterHp - villainFighterStr);
-              endTurn();
-            }}
-          >
-            Villain attack
-          </button>
+          <div className="villainActionButtons">
+            <button
+              className="button"
+              id="villainAttackButton"
+              type="button"
+              onClick={function villainAttack() {
+                setHeroFighterHp(heroFighterHp - villainFighterStr);
+                endTurn();
+              }}
+            >
+              Villain attack
+            </button>
+            <button
+              className="redButton"
+              id="villainSacrificeButton"
+              type="button"
+              onClick={function villainSacrifice() {
+                setVillainFighterHp(0);
+                drawCards(6 - villainList.length, setVillainList);
+              }}
+            >
+              Villain sacrifice
+            </button>
+          </div>
         )}
 
         {heroFighterId && villainFighterId && !playerTurn && (
