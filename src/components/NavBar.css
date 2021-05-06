@@ -14,7 +14,6 @@
 
 .buttonLink1, .buttonLink2, .buttonLink3{
     border: none;
-    /* height: 100%; */
     width: 20%;
     background-color: transparent;
     border: 4px solid #2dffe0;
@@ -58,7 +57,7 @@ a {
     outline: none;
 }
 
-@media screen and (min-width: 993px) {
+@media screen and (max-width: 768px) {
 
     .navBar {
         display: flex;
@@ -72,5 +71,32 @@ a {
         position: sticky;
         top: 0;
         order: initial;
+    }
+
+    .buttonLink1, .buttonLink2, .buttonLink3{
+        border: none;
+        width: 20%;
+        background-color: transparent;
+        border: 4px solid #2dffe0;
+        color: #2dffe0;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: 500;
+        line-height: 2em;
+        text-align: center;
+    }
+
+
+    .buttonLink1:hover, .buttonLink2:hover, .buttonLink3:hover {
+        background-color: #2dffe0;
+        color: #202020;
+    }
+
+    .buttonLink1:active, .buttonLink1:focus, .buttonLink2:active, .buttonLink2:focus, .buttonLink3:active, .buttonLink3:focus {
+        color: #202020;
+    }
+
+    .active{
+        color: #202020;
     }
 }
