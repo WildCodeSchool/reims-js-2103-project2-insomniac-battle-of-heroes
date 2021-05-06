@@ -39,7 +39,6 @@ function Game() {
       <div className="board">
 
         <div className="heroSHandButton">
-
           {playerTurn && (
           <Modal buttonContent="Hero's hand">
             {heroList.map((hero) => (
@@ -109,30 +108,32 @@ function Game() {
             >
               Hero attack
             </button>
+
             <button
               className="redButton"
-              id="heroSacrificeButton"
+              id="heroPowerStrikeButton"
               type="button"
-              onClick={function heroSacrifice() {
-                setHeroFighterHp(0);
-                drawCards(6 - heroList.length, setHeroList);
+              onClick={function heroPowerAttack() {
+                setVillainFighterHp(villainFighterHp - powerStrike(heroFighterStr));
+                endTurn();
               }}
             >
-              Hero sacrifice
+              Hero power strike
             </button>
           </div>
         )}
 
         {heroFighterId && villainFighterId && playerTurn && (
         <button
-          className="button"
+          className="redButton"
+          id="heroSacrificeButton"
           type="button"
-          onClick={function heroPowerAttack() {
-            setVillainFighterHp(villainFighterHp - powerStrike(heroFighterStr));
-            endTurn();
+          onClick={function heroSacrifice() {
+            setHeroFighterHp(0);
+            drawCards(6 - heroList.length, setHeroList);
           }}
         >
-          Hero Power Strike
+          Hero sacrifice
         </button>
         )}
 
@@ -143,19 +144,6 @@ function Game() {
           </label>
           <button type="button" className="redButton" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
         </div>
-
-        {heroFighterId && villainFighterId && playerTurn && (
-        <button
-          className="button"
-          type="button"
-          onClick={function heroSacrifice() {
-            setHeroFighterHp(0);
-            drawCards(6 - heroList.length, setHeroList);
-          }}
-        >
-          Hero Sacrifice
-        </button>
-        )}
 
         <div className="gameLogoContent">
           <Logo />
@@ -232,44 +220,33 @@ function Game() {
             >
               Villain attack
             </button>
+
             <button
               className="redButton"
-              id="villainSacrificeButton"
+              id="villainPowerStrikeButton"
               type="button"
-              onClick={function villainSacrifice() {
-                setVillainFighterHp(0);
-                drawCards(6 - villainList.length, setVillainList);
+              onClick={function villainPowerAttack() {
+                setHeroFighterHp(heroFighterHp - powerStrike(villainFighterStr));
+                endTurn();
               }}
             >
-              Villain sacrifice
+              Villain power strike
             </button>
           </div>
         )}
 
         {heroFighterId && villainFighterId && !playerTurn && (
-          <button
-            className="button"
-            type="button"
-            onClick={function villainPowerAttack() {
-              setHeroFighterHp(heroFighterHp - powerStrike(villainFighterStr));
-              endTurn();
-            }}
-          >
-            Villain Power Strike
-          </button>
-        )}
-
-        {heroFighterId && villainFighterId && !playerTurn && (
-          <button
-            className="button"
-            type="button"
-            onClick={function villainSacrifice() {
-              setVillainFighterHp(0);
-              drawCards(6 - villainList.length, setVillainList);
-            }}
-          >
-            Villain Sacrifice
-          </button>
+        <button
+          className="redButton"
+          id="villainSacrificeButton"
+          type="button"
+          onClick={function villainSacrifice() {
+            setVillainFighterHp(0);
+            drawCards(6 - villainList.length, setVillainList);
+          }}
+        >
+          Villain sacrifice
+        </button>
         )}
 
         {(heroPlayerHp <= 0 || villainPlayerHp <= 0) && (
