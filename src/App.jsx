@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home';
 import Game from './components/Game';
+import Credits from './components/Credits';
 import './App.css';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/game">
             <Game />
+          </Route>
+          <Route exact path="/credits">
+            <Credits />
           </Route>
         </Switch>
       </Router>
