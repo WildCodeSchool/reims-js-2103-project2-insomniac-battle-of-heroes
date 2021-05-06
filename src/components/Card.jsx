@@ -18,7 +18,7 @@ function Card({
     if (fighterHp <= avatar.powerstats.durability * 0.25) {
       return 'redText';
     }
-    return '';
+    return 'greenText';
   };
 
   return (
