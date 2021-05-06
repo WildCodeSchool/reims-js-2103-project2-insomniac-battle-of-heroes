@@ -214,23 +214,6 @@ function Game() {
           </div>
         )}
 
-        <label className="hpDisplay" id="villainPlayerHp" htmlFor="villainPlayerHp">
-          Villain HP :
-          {' '}
-          <span className="white">{villainPlayerHp}</span>
-          {' '}
-          <span className="red">&#9829;</span>
-          <meter
-            id="fuel"
-            min="0"
-            max="300"
-            low="75"
-            high="225"
-            optimum="300"
-            value={villainPlayerHp}
-          />
-        </label>
-
       </div>
     </>
   );
