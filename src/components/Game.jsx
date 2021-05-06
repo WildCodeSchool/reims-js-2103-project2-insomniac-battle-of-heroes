@@ -38,6 +38,7 @@ function Game() {
       <div className="board">
 
         <div className="heroSHandButton">
+
           <Modal buttonContent="Hero's hand" buttonShow={playerTurn}>
             {heroList.map((hero) => (
               <Card
@@ -105,6 +106,16 @@ function Game() {
           Hero attack
         </button>
         )}
+
+        </div>
+        {heroFighterId && villainFighterId && playerTurn && <button className="button" id="heroAttackButton" type="button" onClick={() => setVillainFighterHp(parseInt(villainFighterHp, 10) - parseInt(heroFighterStr, 10))}>Hero attack</button>}
+        <div className="playerTurn">
+          <label htmlFor="PlayerTurn">
+            {playerTurn ? 'Hero ' : 'Villain '}
+            it&apos;s your turn !
+          </label>
+          <button type="button" className="redButton" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
+        </div>
         
         <button
           className="button"
@@ -122,6 +133,7 @@ function Game() {
           it&apos;s your turn !
         </label>
         <button type="button" className="redButton" onClick={() => setPlayerTurn(!playerTurn)}>End Turn</button>
+
         <div className="gameLogoContent">
           <Logo />
         </div>
@@ -216,6 +228,7 @@ function Game() {
           <span className="white">{villainPlayerHp}</span>
           {' '}
           <span className="red">&#9829;</span>
+          {' '}
           <meter
             id="fuel"
             min="0"

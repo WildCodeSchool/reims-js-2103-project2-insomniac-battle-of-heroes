@@ -8,6 +8,9 @@ function Card({
   const classNameValue = className ?? (avatar.id === fighterId ? 'card clicked' : 'card');
 
   const durabilityClass = () => {
+    if (fighterHp === avatar.powerstats.durability) {
+      return 'greenText';
+    }
     if (fighterHp <= avatar.powerstats.durability * 0.75
       && fighterHp > avatar.powerstats.durability * 0.25) {
       return 'orangeText';
