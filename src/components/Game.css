@@ -40,7 +40,7 @@
     color: whitesmoke;
     margin: auto;
     color: #2dffe0;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
 }
 
@@ -95,11 +95,11 @@
 }
 
 #drawHeroButton {
-    margin-right: 10px;
+    margin: auto 10px;
 }
 
 #drawVillainButton {
-    margin-right: 10px;
+    margin: auto 10px;
 }
 
 .button {
@@ -118,21 +118,21 @@ cursor: pointer;
 }
 
 .button:hover {
-box-shadow: 
-    inset -3.5em 0 0 0 #2dffe0,
-    inset 3.5em 0 0 0 #2dffe0;
-transition: all 0.3s ease;
-color: #202020;
+  box-shadow: 
+      inset -3.5em 0 0 0 #2dffe0,
+      inset 3.5em 0 0 0 #2dffe0;
+  transition: all 0.3s ease;
+  color: #202020;
 }
 
 .button:active, .button:focus {
-color: #202020;
-background-color: #2dffe0;
-box-shadow: 
-    inset -3.5em 0 0 0 #2dffe0,
-    inset 3.5em 0 0 0 #2dffe0;
-    animation: pulse 1s;
-outline: none;
+  color: #202020;
+  background-color: #2dffe0;
+  box-shadow: 
+      inset -3.5em 0 0 0 #2dffe0,
+      inset 3.5em 0 0 0 #2dffe0;
+      animation: pulse 1s;
+  outline: none;
 }
 
 @keyframes pulse {
