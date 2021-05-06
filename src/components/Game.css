@@ -12,7 +12,7 @@
         "heroSHandButton heroPlayerHp playerTurn villainPlayerHp villainSHandButton"
         ". heroFightingCard . villainFightingCard ."
         ". . gameLogoContent . ."
-        ". heroAttackButton . villainAttackButton ."
+        ". heroActionButtons . villainActionButtons ."
         ". . . . .";
 }
 
@@ -72,14 +72,18 @@
     margin: auto;
 }
 
-#heroAttackButton {
-    grid-area: heroAttackButton;
-    margin: auto;
+.heroActionButtons {
+    grid-area: heroActionButtons;
+    margin: auto 30px;
+    display: flex;
+    flex-direction: row;
 }
 
-#villainAttackButton {
-    grid-area: villainAttackButton;
-    margin: auto;
+.villainActionButtons {
+    grid-area: villainActionButtons;
+    margin: auto 30px;
+    display: flex;
+    flex-direction: row;
 }
 
 .red {
@@ -101,6 +105,7 @@
 .button {
 display: block;
 margin: auto;
+padding: 5px;
 width: 120px;
 height: 120px;
 background-color: transparent;
