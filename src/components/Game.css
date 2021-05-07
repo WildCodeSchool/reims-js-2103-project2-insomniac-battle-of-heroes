@@ -51,6 +51,7 @@
     font-size: 35px;
     font-weight: 500;
     line-height: 80px;
+    text-align: center;
 }
 
 #heroFightingCard {
@@ -198,5 +199,124 @@ outline: none;
     }
     100% {
         box-shadow: 0 0 0 0 rgba(45, 255, 224, 0);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .board {
+        height: 90vh;
+        display: grid;
+        grid-template-columns: 100px 100px 100px 100px 100px;
+        grid-template-rows: 180px 180px 180px 180px 180px;
+        grid-template-areas:
+            "heroSHandButton heroPlayerHp playerTurn villainPlayerHp villainSHandButton"
+            ". heroFightingCard . villainFightingCard ."
+            ". . gameLogoContent . ."
+            "heroSacrificeButton heroActionButtons . villainActionButtons villainSacrificeButton"
+            ". . . . .";
+    }
+
+    .heroSHandButton {
+        grid-area: heroSHandButton;
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    .villainSHandButton {
+        grid-area: villainSHandButton;
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    #heroPlayerHp {
+        grid-area: heroPlayerHp;
+        color: whitesmoke;
+        margin: auto;
+        color: #2dffe0;
+        font-size: 25px;
+        font-weight: 500;
+        transform: scale(0.6);
+    }
+
+    #villainPlayerHp {
+        grid-area: villainPlayerHp;
+        color: whitesmoke;
+        margin: auto;
+        color: #2dffe0;
+        font-size: 25px;
+        font-weight: 500;
+        transform: scale(0.6);
+    }
+
+    .playerTurn {
+        grid-area: playerTurn;
+        color: whitesmoke;
+        margin: auto;
+        font-size: 35px;
+        font-weight: 500;
+        line-height: initial;
+        text-align: center;
+        transform: scale(0.6);
+    }
+
+    #heroFightingCard {
+        grid-area: heroFightingCard;
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    #villainFightingCard {
+        grid-area: villainFightingCard;
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    .gameLogoContent {
+        grid-area: gameLogoContent;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: -1;
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+
+    .heroActionButtons {
+        grid-area: heroActionButtons;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        transform: scale(0.6);
+    }
+
+    .villainActionButtons {
+        grid-area: villainActionButtons;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        transform: scale(0.6);
+    }
+
+    #heroSacrificeButton {
+        grid-area: heroSacrificeButton;
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    #villainSacrificeButton {
+        grid-area: villainSacrificeButton;
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    #drawHeroButton {
+        margin: auto;
+        transform: scale(0.6);
+    }
+
+    #drawVillainButton {
+        margin: auto;
+        transform: scale(0.6);
     }
 }
