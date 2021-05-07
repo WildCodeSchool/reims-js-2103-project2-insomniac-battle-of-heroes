@@ -4,12 +4,13 @@ import Card from './Card';
 import './Card.css';
 
 function FightingCard({
-  avatar, playerHp, setPlayerHp,
+  avatar, playerHp, setPlayerHp, setHasPicked,
   avatarList, setAvatarList, setFighterStr, fighterHp, setFighterHp, fighterId, setFighterId,
 }) {
   useEffect(() => {
     setFighterStr(parseInt(avatar.powerstats.strength, 10));
     setFighterHp(parseInt(avatar.powerstats.durability, 10));
+    setHasPicked(true);
   }, [fighterId]);
 
   useEffect(() => {
@@ -56,10 +57,12 @@ FightingCard.propTypes = {
   setFighterId: PropTypes.func.isRequired,
   playerHp: PropTypes.number.isRequired,
   setPlayerHp: PropTypes.func.isRequired,
+  setHasPicked: PropTypes.func,
 };
 
 FightingCard.defaultProps = {
   fighterHp: undefined,
+  setHasPicked: undefined,
 };
 
 export default FightingCard;
