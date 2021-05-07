@@ -209,25 +209,27 @@ outline: none;
         height: 90vh;
         display: grid;
         grid-template-columns: 100px 100px 100px 100px 100px;
-        grid-template-rows: 180px 180px 180px 180px 180px;
+        grid-template-rows: 190px 190px 190px 190px 190px;
         grid-template-areas:
             "heroSHandButton heroPlayerHp playerTurn villainPlayerHp villainSHandButton"
             ". heroFightingCard . villainFightingCard ."
             ". . gameLogoContent . ."
-            "heroSacrificeButton heroActionButtons . villainActionButtons villainSacrificeButton"
-            ". . . . .";
+            ". heroActionButtons . villainActionButtons ."
+            ". heroSacrificeButton . villainSacrificeButton .";
     }
 
     .heroSHandButton {
         grid-area: heroSHandButton;
         margin: auto;
         transform: scale(0.6);
+        z-index: 2;
     }
 
     .villainSHandButton {
         grid-area: villainSHandButton;
         margin: auto;
         transform: scale(0.6);
+        z-index: 2;
     }
 
     #heroPlayerHp {
@@ -264,13 +266,15 @@ outline: none;
     #heroFightingCard {
         grid-area: heroFightingCard;
         margin: auto;
-        transform: scale(0.6);
+        transform: translate(-40%, 0%) scale(0.6);
+        z-index: -1;
     }
 
     #villainFightingCard {
         grid-area: villainFightingCard;
         margin: auto;
-        transform: scale(0.6);
+        transform: translate(-10%, 0%) scale(0.6);
+        z-index: -1;
     }
 
     .gameLogoContent {
@@ -286,28 +290,32 @@ outline: none;
         grid-area: heroActionButtons;
         margin: auto;
         display: flex;
-        flex-direction: row;
-        transform: scale(0.6);
+        flex-direction: column;
+        transform: translate(-35%, -50%) scale(0.6);
+        z-index: 0;
     }
 
     .villainActionButtons {
         grid-area: villainActionButtons;
         margin: auto;
         display: flex;
-        flex-direction: row;
-        transform: scale(0.6);
+        flex-direction: column;
+        transform: translate(15%, -50%) scale(0.6);
+        z-index: 0;
     }
 
     #heroSacrificeButton {
         grid-area: heroSacrificeButton;
         margin: auto;
-        transform: scale(0.6);
+        transform: translate(-35%, -90%) scale(0.6);
+        z-index: 0;
     }
 
     #villainSacrificeButton {
         grid-area: villainSacrificeButton;
         margin: auto;
-        transform: scale(0.6);
+        transform: translate(15%, -90%) scale(0.6);
+        z-index: 0;
     }
 
     #drawHeroButton {
@@ -320,3 +328,4 @@ outline: none;
         transform: scale(0.6);
     }
 }
+

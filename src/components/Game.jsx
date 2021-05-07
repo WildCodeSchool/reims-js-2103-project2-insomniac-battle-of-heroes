@@ -249,15 +249,17 @@ function Game() {
         </button>
         )}
 
-        {(heroPlayerHp <= 0 || villainPlayerHp <= 0) && (
-        <Modal isPersistent>
-          {heroPlayerHp <= 0 && <h1>Villain win</h1>}
-          {villainPlayerHp <= 0 && <h1>Hero win</h1>}
-          <button type="button" onClick={() => window.location.reload(true)}>
-            Play again
-          </button>
-        </Modal>
-        )}
+        <div className="endModal">
+          {(heroPlayerHp <= 0 || villainPlayerHp <= 0) && (
+          <Modal isPersistent>
+            {heroPlayerHp <= 0 && <h1>Villain win !</h1>}
+            {villainPlayerHp <= 0 && <h1 id="win">Hero win !</h1>}
+            <button className="button" type="button" onClick={() => window.location.reload(true)}>
+              Play again
+            </button>
+          </Modal>
+          )}
+        </div>
       </div>
     </>
   );
