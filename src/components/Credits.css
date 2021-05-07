@@ -1,0 +1,45 @@
+.creditsPage {
+    color: lightgray;
+    background: linear-gradient(0.25turn, #383838, #202020);
+    width: 75%;
+    text-align: center;
+    margin: auto;
+    padding: 20px 50px 20px 50px;  
+}
+.creditsPage h1 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #2dffe0;
+}
+
+.creditsTeam {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.specialThanks, .creditsTeam p {
+    font-weight: bold;
+    font-size: large;
+}
+.creditSection {
+    width: 250px;
+}
+
+.creditsRessources {
+    margin: 50px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.creditsRessources img {
+    object-fit: scale-down;
+}
+
+.ressourcesSection p {
+    font-family: 'Caveat Brush', cursive;
+    font-size: 1.5em;
+}
+
