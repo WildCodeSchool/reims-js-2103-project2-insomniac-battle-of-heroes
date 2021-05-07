@@ -21,7 +21,7 @@ function Modal({ children, buttonContent, isPersistent }) {
         </div>
       </div>
       )}
-      <button className="button" id="showHeroHandButton" type="button" onClick={() => setShow(true)}>{buttonContent}</button>
+      {!isPersistent && <button className="button" id="showHeroHandButton" type="button" onClick={() => setShow(true)}>{buttonContent}</button>}
     </>
   );
 }
