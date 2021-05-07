@@ -54,8 +54,8 @@ function Home() {
             <p className="pBold">Les étapes d’un tour :</p>
             A chaque tour, le joueur peut soit :
             Poser une carte sur la zone de combat (si il n’y en a pas).
-            Piocher une carte (si sa main est inférieure à 5), attaquer ou utiliser une action spéciale.
-            Un joueur ne peut pas utiliser d’attaque ou d’action spéciale durant son 1er tour de jeu.
+            Piocher une carte (si sa main est inférieure à 5) ou attaquer / utiliser une action spéciale.
+            Le joueur qui démarre ne peut pas utiliser d’attaque ou d’action spéciale durant le 1er tour de jeu.
             Votre tour est terminé. C’est au tour de l’adversaire. Son tour comporte les mêmes étapes que le vôtre.
             <br />
             <br />

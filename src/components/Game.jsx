@@ -20,6 +20,8 @@ function Game() {
   const [villainFighterStr, setVillainFighterStr] = useState();
   const [villainFighterHp, setVillainFighterHp] = useState();
   const [playerTurn, setPlayerTurn] = useState(true);
+  const [hasDraw, setHasDraw] = useState(false);
+  const [hasPicked, setHasPicked] = useState(false);
 
   useEffect(() => {
     drawCards(5, setHeroList);
@@ -28,7 +30,18 @@ function Game() {
 
   function endTurn() {
     setPlayerTurn(!playerTurn);
+    setHasDraw(false);
+    setHasPicked(false);
   }
+
+  useEffect(() => {
+    if (hasDraw && heroFighterId && villainFighterId) {
+      endTurn();
+    }
+    if (hasDraw && hasPicked) {
+      endTurn();
+    }
+  }, [hasDraw, hasPicked]);
 
   return (
     <>
@@ -51,7 +64,7 @@ function Game() {
               />
             ))}
             { (heroList.length < 5) && (
-            <button className="button" id="drawHeroButton" type="button" onClick={() => drawCards(1, setHeroList)}>
+            <button className="button" id="drawHeroButton" type="button" onClick={() => { drawCards(1, setHeroList); setHasDraw(true); }}>
               Draw hero
             </button>
             )}
@@ -91,6 +104,7 @@ function Game() {
             setFighterId={setHeroFighterId}
             playerHp={heroPlayerHp}
             setPlayerHp={setHeroPlayerHp}
+            setHasPicked={setHasPicked}
           />
           )}
         </div>
@@ -162,7 +176,7 @@ function Game() {
               />
             ))}
             { (villainList.length < 5) && (
-            <button className="button" id="drawVillainButton" type="button" onClick={() => drawCards(1, setVillainList)}>
+            <button className="button" id="drawVillainButton" type="button" onClick={() => { drawCards(1, setVillainList); setHasDraw(true); }}>
               Draw villain
             </button>
             )}
@@ -203,6 +217,7 @@ function Game() {
             setFighterId={setVillainFighterId}
             playerHp={villainPlayerHp}
             setPlayerHp={setVillainPlayerHp}
+            setHasPicked={setHasPicked}
           />
           )}
         </div>
